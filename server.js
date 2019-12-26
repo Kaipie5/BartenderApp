@@ -125,15 +125,30 @@ app.use(methodOverride('_method'));
 //     });
 // }
 
-// function Book(bookObj){
-//   const placeholderImage = `https://i.imgur.com/J5LVHEL.jpg`;
-//   bookObj.imageLinks.thumbnail !== null ? this.image = bookObj.imageLinks.thumbnail : this.image = placeholderImage;
-//   this.image.substring(0,5) != 'https'? this.image = this.image.substring(0,4) + 's' + this.image.substring(4, this.image.length): this.image;
-//   bookObj.title !== null ? this.title = bookObj.title : this.title = 'no title available';
-//   bookObj.authors !== null ? this.authors = bookObj.authors : this.authors = 'no author available';
-//   bookObj.description !== null ? this.description = bookObj.description : this.description = 'no description available';
-//   bookObj.industryIdentifiers[0].identifier !== null ? this.isbn = bookObj.industryIdentifiers[0].identifier : this.isbn = 'no isbn available';
-// }
+function Cocktails(obj){
+    this.name = obj.strDrink; 
+    this.image_url = obj.strDrinkThumb;
+    this.id = obj.idDrink;
+    this.alcoholic = obj.strAlcoholic;
+    this.category = obj.strCategory;
+    this.instructions = obj.strInstructions;
+    for (let i = 0; i < 15; i++){
+        if(obj.strIngredient`${i+1}` !== null){
+            this.ingredient.push(obj.strIngredient`${i+1}`);
+        }
+    }
+    for (let i = 0; i < 15; i++){
+        if(obj.strMeasure`${i+1}` !== null){
+            this.measure.push(obj.strMeasure`${i+1}`);
+        }
+    }
+  }
+
+function SearchCocktail(obj){
+    this.name = obj.strDrink; 
+    this.image_url = obj.strDrinkThumb;
+    this.id = obj.idDrink;
+  }
 
 // function handleError(request, response, error) {
 //   console.error(error);
