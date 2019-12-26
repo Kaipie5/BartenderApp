@@ -134,14 +134,14 @@ function Cocktails(obj){
     this.instructions = obj.strInstructions;
     for (let i = 0; i < 15; i++){
         if(obj.strIngredient`${i+1}` !== null){
-            this.ingredient.push(obj.strIngredient`${i+1}`);
+            this.ingredient`${i+1}` = obj.strIngredient`${i+1}`;
         }
-    }
-    for (let i = 0; i < 15; i++){
-        if(obj.strMeasure`${i+1}` !== null){
-            this.measure.push(obj.strMeasure`${i+1}`);
-        }
-    }
+    // }
+    // for (let i = 0; i < 15; i++){
+    //     if(obj.strMeasure`${i+1}` !== null){
+    //         this.measure.push(obj.strMeasure`${i+1}`);
+    //     }
+    // }
   }
 
 function SearchCocktail(obj){
