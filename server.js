@@ -11,7 +11,7 @@ var methodOverride = require('method-override')
 const PORT = process.env.PORT || 3001;
 app.use(express.static('./public'));
 app.set('view engine', 'ejs');
-app.use(express.urlencoded ({ extended: true, }));
+app.use(express.urlencoded({ extended: true, }));
 app.use(methodOverride('_method'));
 
 // app.get('/', getBooks);
@@ -132,23 +132,23 @@ function Cocktails(obj){
     this.alcoholic = obj.strAlcoholic;
     this.category = obj.strCategory;
     this.instructions = obj.strInstructions;
-    for (let i = 0; i < 15; i++){
-        if(obj.strIngredient`${i+1}` !== null){
-            this.ingredient`${i+1}` = obj.strIngredient`${i+1}`;
-        }
+    // for (let i = 0; i < 15; i++){
+    //     if(obj.strIngredient`${i+1}` !== null){
+    //         this.ingredient`${i+1}` = obj.strIngredient`${i+1}`;
+    //     }
     // }
     // for (let i = 0; i < 15; i++){
     //     if(obj.strMeasure`${i+1}` !== null){
     //         this.measure.push(obj.strMeasure`${i+1}`);
     //     }
     // }
-  }
+}
 
-function SearchCocktail(obj){
-    this.name = obj.strDrink; 
-    this.image_url = obj.strDrinkThumb;
-    this.id = obj.idDrink;
-  }
+function SearchCocktail(obj) {
+  this.name = obj.strDrink;
+  this.image_url = obj.strDrinkThumb;
+  this.id = obj.idDrink;
+}
 
 // function handleError(request, response, error) {
 //   console.error(error);
@@ -156,7 +156,7 @@ function SearchCocktail(obj){
 // }
 
 client.connect()
-  .then( () => {
+  .then(() => {
     app.listen(PORT, () => console.log(`App is listening on port ${PORT}`));
   })
-  .catch( err => console.error(err));
+  .catch(err => console.error(err));
