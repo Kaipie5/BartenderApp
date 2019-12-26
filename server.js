@@ -125,23 +125,23 @@ app.use(methodOverride('_method'));
 //     });
 // }
 
-function Cocktails(obj) {
-  this.name = obj.strDrink;
-  this.image_url = obj.strDrinkThumb;
-  this.id = obj.idDrink;
-  this.alcoholic = obj.strAlcoholic;
-  this.category = obj.strCategory;
-  this.instructions = obj.strInstructions;
-  for (let i = 0; i < 15; i++) {
-    if (obj.strIngredient`${i + 1}` !== null) {
-      this.ingredient.push(obj.strIngredient`${i + 1}`);
-    }
-  }
-  for (let i = 0; i < 15; i++) {
-    if (obj.strMeasure`${i + 1}` !== null) {
-      this.measure.push(obj.strMeasure`${i + 1}`);
-    }
-  }
+function Cocktails(obj){
+    this.name = obj.strDrink; 
+    this.image_url = obj.strDrinkThumb;
+    this.id = obj.idDrink;
+    this.alcoholic = obj.strAlcoholic;
+    this.category = obj.strCategory;
+    this.instructions = obj.strInstructions;
+    // for (let i = 0; i < 15; i++){
+    //     if(obj.strIngredient`${i+1}` !== null){
+    //         this.ingredient`${i+1}` = obj.strIngredient`${i+1}`;
+    //     }
+    // }
+    // for (let i = 0; i < 15; i++){
+    //     if(obj.strMeasure`${i+1}` !== null){
+    //         this.measure.push(obj.strMeasure`${i+1}`);
+    //     }
+    // }
 }
 
 function SearchCocktail(obj) {
