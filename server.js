@@ -14,7 +14,8 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true, }));
 app.use(methodOverride('_method'));
 
-// app.get('/', getBooks);
+app.get('/', renderHome);
+app.get('/search', searchCocktails);
 // app.post('/searches', getBookInfo);
 // app.get('/searches/new', getForm);
 // app.post('/', insertIntoDatabase);
@@ -25,6 +26,13 @@ app.use(methodOverride('_method'));
 // function getForm(request, response){
 //   response.render('pages/searches/new');
 // }
+function renderHome(request, response){
+  response.render('index');
+}
+
+function searchCocktails(request, response){
+  response.render('search/search');
+}
 
 // function getBookInfo(request, response){
 
