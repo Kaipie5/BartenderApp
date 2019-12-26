@@ -1,7 +1,6 @@
 {
   "name": "bartenderapp",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "dependencies": {
     "dotenv": "^8.2.0",
@@ -19,8 +18,6 @@
     "type": "git",
     "url": "git+https://github.com/Kaipie5/BartenderApp.git"
   },
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/Kaipie5/BartenderApp/issues"
   },
