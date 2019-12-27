@@ -9,11 +9,20 @@
 </head>
 
 <body>
+  <a>Search by Name</a>
+  <form action='/view' method='post'>
+    <input type="text" name="search" value="Enter cocktail name" required>
+    <button type="submit">Search</button>
+  </form>
   <div id="base-selectors">
     <section>
-      <a href=""> VODKA </a>
+      <a> VODKA </a>
+      <form action='/search/cocktails' method='post'>
+        <input type="hidden" name="search" value="Vodka" required>
+        <button type="submit">Vodka</button>
+      </form>
     </section>
-    <section>
+    <!-- <section>
       <a href=""> GIN </a>
     </section>
     <section>
@@ -21,7 +30,7 @@
     </section>
     <section>
       <a href=""> RUM </a>
-    </section>
+    </section> -->
 
   </div>
 
