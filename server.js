@@ -71,11 +71,11 @@ function Cocktail(obj, ingredientArray, measureArray) {
   this.alcoholic = obj.strAlcoholic;
   this.category = obj.strCategory;
   this.instructions = obj.strInstructions;
-  this.ingredients = ingredientArray[0] + " " + measureArray[0];
+  this.ingredients = measureArray[0] + ' ' + ingredientArray[0];
   for (let i = 1; i < ingredientArray.length; i++) {
-    ingredientArray[i] !== null ? this.ingredients = this.ingredients + ', ' + ingredientArray[i] : this.ingredients;
+    measureArray[i] !== null ? this.ingredients = this.ingredients + ', ' + measureArray[i] : this.ingredients;
 
-    measureArray[i] !== null ? this.ingredients = this.ingredients + " " + measureArray[i] : this.ingredients;
+    ingredientArray[i] !== null ? this.ingredients = this.ingredients + ' ' + ingredientArray[i] : this.ingredients;
   }
 }
 
