@@ -24,9 +24,6 @@ app.post('/view', getCocktailsByName);
 // app.put('/books/updatebook', updateBook);
 // app.delete('/delete/deletebook', deleteBook);
 
-// function getForm(request, response){
-//   response.render('pages/searches/new');
-// }
 function renderHome(request, response) {
   response.render('index');
 }
