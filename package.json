@@ -1,0 +1,26 @@
+{
+  "name": "bartenderapp",
+  "version": "1.0.0",
+  "main": "server.js",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "method-override": "^3.0.0",
+    "pg": "^7.15.2",
+    "superagent": "^5.1.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kaipie5/BartenderApp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Kaipie5/BartenderApp/issues"
+  },
+  "homepage": "https://github.com/Kaipie5/BartenderApp#readme"
+}

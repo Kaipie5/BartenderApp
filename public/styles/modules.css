@@ -1,0 +1,13 @@
+.square {
+    border: 1px solid black;
+    margin: 30px;
+    display: grid;
+    grid-template-columns: minmax(300px, 70%);
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.editDetails {
+    display: none;
+}
