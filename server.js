@@ -17,7 +17,8 @@ app.use(methodOverride('_method'));
 app.get('/', renderHome);
 app.get('/search', searchCocktails);
 // app.post('/searches', getBookInfo);
-// app.get('/searches/new', getForm);
+app.post('/search/cocktails', getCocktailsByBase);
+app.post('/view', getCocktailsByName);
 // app.post('/', insertIntoDatabase);
 // app.get('/books/:book_isbn', getOneBook);
 // app.put('/books/updatebook', updateBook);
@@ -34,105 +35,35 @@ function searchCocktails(request, response){
   response.render('search/search');
 }
 
-// function getBookInfo(request, response){
+function getCocktailsByBase(request, response){
+  superagent.get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${request.body.search}`).then(responseFromSuper => {
+      let arr = responseFromSuper.body.drinks.map(cocktail => {
+        return new SearchCocktail(cocktail);
+      });
+    response.render('search/search-results-base', {arr: arr});
+  })
+}
 
-//   let url = 'https://www.googleapis.com/books/v1/volumes?q=';
-//   let typeOfSearch = request.body.search[1];
-//   let searchCriteria = request.body.search[0];
+function getCocktailsByName(request, response){
+  superagent.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${request.body.search}`).then(responseFromSuper => {
+    let filteredResult = responseFromSuper.body.drinks;
+    console.log(filteredResult[0]);
+      let ingredientArray = [];
+      let measureArray = [];
+      for (let [K, V] of Object.entries(filteredResult[0])) {
+        if (K.includes('Ingredient')) {
+          ingredientArray.push(V);
+        }
+        if (K.includes('Measure')) {
+          measureArray.push(V);
+        }
+      }
+      let cocktail = new Cocktail(filteredResult[0], ingredientArray, measureArray);
+        response.render('view', {cocktail: cocktail});
+})
+}
 
-//   if(typeOfSearch === 'author'){
-//     url += `+inauthor:${searchCriteria}`;
-//   }
-
-//   if(typeOfSearch === 'title'){
-//     url += `+intitle:${searchCriteria}`;
-//   }
-
-//   superagent.get(url)
-//     .then(res => {
-//       let tenBooksArray = [];
-//       for (let i = 0; i < 10; i++){
-//         tenBooksArray.push(res.body.items[i]);
-//       }
-//       let bookArray = tenBooksArray.map(book => {
-//         return new Book(book.volumeInfo);
-//       });
-//       response.render('pages/searches/show', {bookArray: bookArray});
-//     })
-//     .catch(error => {
-//       console.log(error);
-//       response.render('pages/error');
-//     });
-// }
-
-// function getBooks(request, response){
-//   let sql = 'SELECT * FROM books;';
-//   client.query(sql)
-//     .then(results => {
-
-//       let bookObjectArray = results.rows;
-//       if(bookObjectArray.length){
-//         response.render('pages/index', {bookArray: bookObjectArray});
-//       }
-//       else{
-//         response.render('pages/searches/new');
-//       }
-//     })
-//     .catch(error => {
-//       console.log(error);
-//       response.render('pages/error');
-//     });
-// }
-
-// function getOneBook(request, response){
-//   let id = request.params.book_isbn;
-//   let sql = 'SELECT * FROM books WHERE isbn = $1;';
-//   let safeValues = [id];
-
-//   client.query(sql, safeValues)
-//     .then(results => {
-//       let chosenBook = results.rows[0];
-//       response.render('pages/details', {book:chosenBook});
-//     });
-//   // go to the database, get a specific task using the id of that task and show the details of that task on the detail.ejs page
-// }
-
-// function insertIntoDatabase(request, response){
-//   let sql = 'INSERT INTO books (authors, title, isbn, image_url, description, bookshelf) VALUES ($1, $2, $3, $4, $5, $6);';
-//   let safeValues = [request.body.book[1], request.body.book[0], request.body.book[2], request.body.book[3], request.body.book[5], request.body.book[4]];
-
-//   client.query(sql, safeValues);
-
-//   response.redirect('/');
-// }
-
-// function updateBook(request, response){
-//   let {authors, title, isbn, image, description, bookshelf} = request.body;
-
-//   let sql = 'UPDATE books SET authors=$1, title=$2, isbn=$3, image_url=$4, description=$5, bookshelf=$6 WHERE isbn=$7;';
-
-//   let safeValues = [authors, title, isbn, image, description, bookshelf, isbn];
-
-//   client.query(sql, safeValues);
-
-//   response.redirect(`/books/${isbn}`);
-//   // redirect to the detail page with the new information
-// }
-
-// function deleteBook(request, response){
-//   let sql = `DELETE FROM books WHERE isbn = $1;`;
-//   let isbn = request.body.isbn;
-//   let safeValues = [isbn];
-
-//   client.query(sql, safeValues)
-//     .then(() => {
-//       response.redirect('/');
-//     })
-//     .catch(error => {
-//       handleError(error, response);
-//     });
-// }
-
+<<<<<<< HEAD
 function Cocktails(obj) {
   this.name = obj.strDrink;
   this.image_url = obj.strDrinkThumb;
@@ -150,6 +81,21 @@ function Cocktails(obj) {
   //         this.measure.push(obj.strMeasure`${i+1}`);
   //     }
   // }
+=======
+function Cocktail(obj, ingredientArray, measureArray){
+    this.name = obj.strDrink; 
+    this.image_url = obj.strDrinkThumb;
+    this.id = obj.idDrink;
+    this.alcoholic = obj.strAlcoholic;
+    this.category = obj.strCategory;
+    this.instructions = obj.strInstructions;
+    this.ingredients = ingredientArray[0] + " " +  measureArray[0];
+    for(let i = 1; i < ingredientArray.length; i++){
+      ingredientArray[i] !== null ? this.ingredients = this.ingredients + ', ' + ingredientArray[i] : this.ingredients;
+      
+      measureArray[i] !== null ? this.ingredients = this.ingredients + " " +  measureArray[i] : this.ingredients;
+    }
+>>>>>>> 8d69433a9295740e563ca91da8b2c86b328e314b
 }
 
 function SearchCocktail(obj) {
@@ -158,10 +104,6 @@ function SearchCocktail(obj) {
   this.id = obj.idDrink;
 }
 
-// function handleError(request, response, error) {
-//   console.error(error);
-//   response.status(404).render('pages/error');
-// }
 
 client.connect()
   .then(() => {
