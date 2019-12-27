@@ -34,3 +34,63 @@
     padding: 0.5em 1.5em 0.5em 1.5em;
     text-decoration: none;
 }
+.wrapper{
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 100px;
+}
+.navbar{
+    width: 100px;
+    height: 100px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.navbar div{
+    height: 8px;
+    width: 60px;
+    background-color: rgb(104, 104, 104);
+    position: absolute;
+    transition: all 0.5s ease;
+}
+.navbar .first{
+    top: 25px;
+    left: 20px;
+}
+
+.navbar .second{
+    top: 45px;
+    left: 20px;
+}
+
+.navbar .third{
+    top: 65px;
+    left: 20px;
+}
+/* hover */
+.navbar:hover .first {
+    transform: translateY(20px) rotate(45deg);
+    transition: all 0.5s ease;
+}
+
+.navbar:hover .second {
+    opacity: 0;
+    transition: all 0.2s ease;
+}
+
+.navbar:hover .third{
+    transform: translateY(-20px) rotate(-45deg);
+    transition: all 0.5s ease;
+}
+
+.navbar:hover{
+    border-radius:50%;
+    transition: all 0.3s ease;  
+}
+.wrapper ul {
+    visibility: hidden;
+}
+.wrapper:hover ul {
+    visibility: visible;
+}
