@@ -125,7 +125,7 @@ function Cocktail(obj, ingredientArray, measureArray) {
 }
 
 function SearchCocktail(obj) {
-  this.title = obj.strDrink;
+  this.name = obj.strDrink;
   this.image_url = obj.strDrinkThumb;
   this.id = obj.idDrink;
 }

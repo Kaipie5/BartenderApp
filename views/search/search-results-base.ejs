@@ -8,7 +8,7 @@
     <div id="search-results">
         <% arr.forEach(cocktail => { %>
         <img src=<%= cocktail.image_url %>>
-        <h2><%= cocktail.title %></h2>
+        <h2><%= cocktail.name %></h2>
         <p hidden id="cocktail-db-id-number"><%= cocktail.id %></p>
         <form action="/view" method="post">
             <input type="hidden" name="search" value=<%= cocktail.name %> required>
