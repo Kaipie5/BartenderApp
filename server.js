@@ -73,7 +73,7 @@ function getCocktailsByName(request, response) {
   })
 }
 
-function insertIntoDatabase(request, response){
+function insertIntoDatabase(request, response) {
   console.log(request.body.id);
   console.log(request.body.title);
   console.log(request.body.image_url);
@@ -88,7 +88,7 @@ function insertIntoDatabase(request, response){
   response.redirect('/recipe-book');
 }
 
-function deleteCocktail(request, response){
+function deleteCocktail(request, response) {
   let sql = `DELETE FROM cocktails WHERE cocktail_id = $1;`;
   let id = request.body.cocktail_id;
   let safeValues = [id];
@@ -125,7 +125,7 @@ function Cocktail(obj, ingredientArray, measureArray) {
 }
 
 function SearchCocktail(obj) {
-  this.name = obj.strDrink;
+  this.title = obj.strDrink;
   this.image_url = obj.strDrinkThumb;
   this.id = obj.idDrink;
 }

@@ -27,6 +27,7 @@
     width: 375px;
 }
 
+/* NAVBAR/HABURGER RULES */
 #nav ul li a {
     display: block;
     text-decoration: none;
@@ -36,7 +37,6 @@
 }
 .wrapper{
     position: absolute;
-    top: 10%;
     left: 10%;
     width: 100px;
 }
@@ -93,4 +93,52 @@
 }
 .wrapper:hover ul {
     visibility: visible;
+}
+
+/* BASE SELECTOR TILES */
+#base-selectors{
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;  
+    flex-direction: column; 
+}
+.base-selector-tile {
+    display: flex;
+    justify-content: center;
+}
+.button {
+    background-color: rgb(184, 184, 184); /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    width: 250px;
+    height: 200px;
+    margin: 20px;
+  }
+
+  /* small button */
+  .small-button {
+    border: none;
+    background-color: rgb(184, 184, 184);
+    color: white;
+    padding: 15px 32px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px;
+    border-radius: 5px;
+  }
+
+/* SEARCH RESULTS */
+#search-results img {
+    margin-top: 30px;
+    width: 35%;
+    height: 35%;
+}
+#search-results-title {
+    margin-top: 20px;
 }
