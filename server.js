@@ -71,6 +71,15 @@ function Cocktail(obj, ingredientArray, measureArray) {
   this.alcoholic = obj.strAlcoholic;
   this.category = obj.strCategory;
   this.instructions = obj.strInstructions;
+  let instructionRegex = /\.\w/g;
+  let capLetterRegex = /\.\s[a-z]/g;
+  if (instructionRegex.test(this.instructions)) {
+    this.instructions = this.instructions.replace(/\./g, '. ');
+    let fLeterArr = this.instructions.match(capLetterRegex);
+    for (let i = 0; i < fLeterArr.length; i++) {
+      this.instructions = this.instructions.replace(/\.\s[a-z]/, fLeterArr[i].toUpperCase())
+    }
+  }
   this.ingredients = measureArray[0] + ' ' + ingredientArray[0];
   for (let i = 1; i < ingredientArray.length; i++) {
     measureArray[i] !== null ? this.ingredients = this.ingredients + ', ' + measureArray[i] : this.ingredients;
