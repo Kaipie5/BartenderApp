@@ -1,4 +1,4 @@
-.square {
+/* .square {
     border: 1px solid black;
     margin: 30px;
     display: grid;
@@ -10,4 +10,27 @@
 
 .editDetails {
     display: none;
+} */
+
+#header {
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #fff;
+    height: 100%;
+    left: 0;
+    overflow-y: auto;
+    position: fixed;
+    text-align: right;
+    top: 0;
+    width: 375px;
+}
+
+#nav ul li a {
+    display: block;
+    text-decoration: none;
+    color: black;
+    padding: 0.5em 1.5em 0.5em 1.5em;
+    text-decoration: none;
 }
