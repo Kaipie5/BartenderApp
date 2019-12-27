@@ -3,6 +3,8 @@
 <%- include('./partials/head') %>
 
 <body>
+    <%- include('./partials/header') %>
+
     <ul>
         <h1><%= cocktail.title %></h1>
         <img src=<%= cocktail.image_url %>>
@@ -18,7 +20,7 @@
             <input type="hidden" name="image_url" value="<%= cocktail.image_url %>">
             <input type="hidden" name="instructions" value="<%= cocktail.instructions %>">
             <input type="hidden" name="ingredients" value="<%= cocktail.ingredients %>">
-        <button type="submit">Save to recipe book</button>
+            <button type="submit">Save to recipe book</button>
         </form>
     </div>
 </body>
