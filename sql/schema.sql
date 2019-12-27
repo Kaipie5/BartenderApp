@@ -5,7 +5,6 @@ CREATE TABLE cocktails (
     title VARCHAR(255),
     image_url VARCHAR(255),
     instructions TEXT,
-    ingredients TEXT
+    ingredients TEXT,
+    cocktail_id VARCHAR(255)
   );
-
-  INSERT INTO cocktails (title, instructions) VALUES ('Good Drink', '1. Add liquor to cup 2. Sip')
