@@ -3,19 +3,19 @@
 <%- include('../partials/head') %>
 
 <body>
+    <h1 id="search-results-title">Search Results:</h1>
     <%- include('../partials/header') %>
-
-    <% arr.forEach(cocktail => { %>
-    <ul>
+    <div id="search-results">
+        <% arr.forEach(cocktail => { %>
         <img src=<%= cocktail.image_url %>>
         <h2><%= cocktail.title %></h2>
         <p hidden id="cocktail-db-id-number"><%= cocktail.id %></p>
-    </ul>
-    <form action="/view" method="post">
-        <input type="hidden" name="search" value=<%= cocktail.name %> required>
-        <button type="submit">View Recipe</button>
-    </form>
-    <% }) %>
+        <form action="/view" method="post">
+            <input type="hidden" name="search" value=<%= cocktail.name %> required>
+            <button class="small-button" type="submit">View Recipe</button>
+        </form>
+        <% }) %>
+    </div>
 </body>
 
 </html>
