@@ -19,11 +19,15 @@ This app uses cors, express, superagent, ejs, method-override, and dotenv as dep
 
 ## Change Log
 
-12/27/2019 12:00am - Created SQL database for server
+12/26/2019 12:00am - Created SQL database for server
 
-12/27/2019 3:30pm - Finished SearchByBase implementation
+12/26/2019 3:30pm - Finished SearchByBase implementation
 
-12/27/2019 4:30pm - Finished SearchByName implementation
+12/26/2019 4:30pm - Finished SearchByName implementation
+
+12/27/2019 11:00am - Finished InsertIntoDatabase implementation
+
+12/27/2019 11:15am - Finished DeleteFromDatabase implementation
 
 ## Credits and Collaborations
 Cocktail Db for their API.
@@ -52,6 +56,39 @@ Finish time: 4:00pm
 Actual time needed to complete: 1 hour
 
 
+Number and name of feature: Insert into Database
+
+Estimate of time needed to complete: 1 hour
+
+Start time: 10:30am
+
+Finish time: 11:00am
+
+Actual time needed to complete: 30 minutes
+
+
+Number and name of feature: Delete from Database
+
+Estimate of time needed to complete: 1 hour
+
+Start time: 11:00am
+
+Finish time: 11:15am
+
+Actual time needed to complete: 15 minutes
+
+
+Number and name of feature: Navbar
+
+Estimate of time needed to complete: 1 hour
+
+Start time: 11:30am
+
+Finish time: 11:55am
+
+Actual time needed to complete: 25 minutes
+
+
 Number and name of feature: 
 
 Estimate of time needed to complete: 
@@ -72,4 +109,3 @@ Start time:
 Finish time: 
 
 Actual time needed to complete: 
-
