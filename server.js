@@ -6,7 +6,7 @@ const app = express()
 require('ejs')
 const superagent = require('superagent')
 const client = require('./lib/client')
-var methodOverride = require('method-override')
+const methodOverride = require('method-override')
 
 const PORT = process.env.PORT || 3001;
 app.use(express.static('./public'));
@@ -14,15 +14,27 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true, }));
 app.use(methodOverride('_method'));
 
+// ROUTES
 app.get('/', renderHome);
 app.get('/search', searchCocktails);
-// app.post('/searches', getBookInfo);
 app.post('/search/cocktails', getCocktailsByBase);
 app.post('/view', getCocktailsByName);
+app.get('/database/recipe-book', renderRecipeBookPage);
+// app.post('/searches', getBookInfo);
 // app.post('/', insertIntoDatabase);
 // app.get('/books/:book_isbn', getOneBook);
 // app.put('/books/updatebook', updateBook);
 // app.delete('/delete/deletebook', deleteBook);
+
+function renderRecipeBookPage(request, response) {
+  let sql = "SELECT * FROM cocktails;";
+  client.query(sql)
+    .then(results => {
+      let cocktails = results.rows;
+      console.log(cocktails);
+      response.render('database/recipe-book', { cocktailArray: cocktails })
+    })
+}
 
 function renderHome(request, response) {
   response.render('index');
@@ -65,8 +77,6 @@ function Cocktail(obj, ingredientArray, measureArray) {
   this.name = obj.strDrink;
   this.image_url = obj.strDrinkThumb;
   this.id = obj.idDrink;
-  this.alcoholic = obj.strAlcoholic;
-  this.category = obj.strCategory;
   this.instructions = obj.strInstructions;
   let instructionRegex = /\.\w/g;
   let capLetterRegex = /\.\s[a-z]/g;
