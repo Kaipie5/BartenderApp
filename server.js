@@ -36,7 +36,6 @@ function renderRecipeBookPage(request, response) {
     })
 }
 
-
 function renderHome(request, response) {
   response.render('index');
 }
