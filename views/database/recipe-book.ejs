@@ -14,9 +14,9 @@
     <h2><%= cocktail.title %></h2>
     <p hidden id="cocktail-db-id-number"><%= cocktail.id %></p>
   </ul>
-  <form action="/view" method="post">
-    <input type="hidden" name="search" value=<%= cocktail.name %> required>
-    <button type="submit">View Recipe</button>
+  <form action="<%= '/delete/deletecocktail?_method=DELETE' %>" method="post">
+    <input type="hidden" name="cocktail_id" value="<%= cocktail.cocktail_id %>">
+    <button type="submit">delete</button>
   </form>
   <% }) %>
 </body>
