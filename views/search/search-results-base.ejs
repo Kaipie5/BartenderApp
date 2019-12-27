@@ -6,10 +6,10 @@
     <% arr.forEach(cocktail => { %>
     <ul>
         <img src=<%= cocktail.image_url %>>
-        <li>Title: <%= cocktail.name %></li>
-        <li>ID: <%= cocktail.id %></li>
+        <h2><%= cocktail.name %></h2>
+        <p hidden id="cocktail-db-id-number"><%= cocktail.id %></p>
     </ul>
-    <form action='/view' method='post'>
+    <form action="/view" method="post">
         <input type="hidden" name="search" value=<%= cocktail.name %> required>
         <button type="submit">View Recipe</button>
     </form>
