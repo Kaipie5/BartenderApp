@@ -27,55 +27,65 @@ app.post('/view', getCocktailsByName);
 // function getForm(request, response){
 //   response.render('pages/searches/new');
 // }
-function renderHome(request, response){
+function renderHome(request, response) {
   response.render('index');
 }
 
-function searchCocktails(request, response){
+function searchCocktails(request, response) {
   response.render('search/search');
 }
 
-function getCocktailsByBase(request, response){
+function getCocktailsByBase(request, response) {
   superagent.get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${request.body.search}`).then(responseFromSuper => {
-      let arr = responseFromSuper.body.drinks.map(cocktail => {
-        return new SearchCocktail(cocktail);
-      });
-    response.render('search/search-results-base', {arr: arr});
+    let arr = responseFromSuper.body.drinks.map(cocktail => {
+      return new SearchCocktail(cocktail);
+    });
+    response.render('search/search-results-base', { arr: arr });
   })
 }
 
-function getCocktailsByName(request, response){
+function getCocktailsByName(request, response) {
   superagent.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${request.body.search}`).then(responseFromSuper => {
     let filteredResult = responseFromSuper.body.drinks;
     console.log(filteredResult[0]);
-      let ingredientArray = [];
-      let measureArray = [];
-      for (let [K, V] of Object.entries(filteredResult[0])) {
-        if (K.includes('Ingredient')) {
-          ingredientArray.push(V);
-        }
-        if (K.includes('Measure')) {
-          measureArray.push(V);
-        }
+    let ingredientArray = [];
+    let measureArray = [];
+    for (let [K, V] of Object.entries(filteredResult[0])) {
+      if (K.includes('Ingredient')) {
+        ingredientArray.push(V);
       }
-      let cocktail = new Cocktail(filteredResult[0], ingredientArray, measureArray);
-        response.render('view', {cocktail: cocktail});
-})
+      if (K.includes('Measure')) {
+        measureArray.push(V);
+      }
+    }
+    let cocktail = new Cocktail(filteredResult[0], ingredientArray, measureArray);
+    response.render('view', { cocktail: cocktail });
+  })
 }
 
-function Cocktail(obj, ingredientArray, measureArray){
-    this.name = obj.strDrink; 
-    this.image_url = obj.strDrinkThumb;
-    this.id = obj.idDrink;
-    this.alcoholic = obj.strAlcoholic;
-    this.category = obj.strCategory;
-    this.instructions = obj.strInstructions;
-    this.ingredients = ingredientArray[0] + " " +  measureArray[0];
-    for(let i = 1; i < ingredientArray.length; i++){
-      ingredientArray[i] !== null ? this.ingredients = this.ingredients + ', ' + ingredientArray[i] : this.ingredients;
-      
-      measureArray[i] !== null ? this.ingredients = this.ingredients + " " +  measureArray[i] : this.ingredients;
+
+function Cocktail(obj, ingredientArray, measureArray) {
+  this.name = obj.strDrink;
+  this.image_url = obj.strDrinkThumb;
+  this.id = obj.idDrink;
+  this.alcoholic = obj.strAlcoholic;
+  this.category = obj.strCategory;
+  this.instructions = obj.strInstructions;
+  let instructionRegex = /\.\w/g;
+  let capLetterRegex = /\.\s[a-z]/g;
+  if (instructionRegex.test(this.instructions)) {
+    this.instructions = this.instructions.replace(/\./g, '. ');
+    let fLeterArr = this.instructions.match(capLetterRegex);
+    for (let i = 0; i < fLeterArr.length; i++) {
+      this.instructions = this.instructions.replace(/\.\s[a-z]/, fLeterArr[i].toUpperCase())
     }
+  }
+  this.ingredients = measureArray[0] + ' ' + ingredientArray[0];
+  for (let i = 1; i < ingredientArray.length; i++) {
+    measureArray[i] !== null ? this.ingredients = this.ingredients + ', ' + measureArray[i] : this.ingredients;
+
+    ingredientArray[i] !== null ? this.ingredients = this.ingredients + ' ' + ingredientArray[i] : this.ingredients;
+  }
 }
 
 function SearchCocktail(obj) {
