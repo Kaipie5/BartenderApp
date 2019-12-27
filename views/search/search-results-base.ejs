@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <% arr.forEach(cocktail => { %>
+            <ul>
+                <img src=<%= cocktail.image_url %>>
+                <li>Title: <%= cocktail.name %></li>
+                <li>ID: <%= cocktail.id %></li>
+            </ul>
+            <form action='/view' method='post'>
+                <input type="hidden" name="search" value=<%= cocktail.name %> required>
+                <button type="submit">View Recipe</button>
+              </form>
+    <% }) %>
+</body>
+</html>
