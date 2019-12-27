@@ -13,13 +13,15 @@ app.use(express.static('./public'));
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true, }));
 app.use(methodOverride('_method'));
+app.delete('/delete/deletecocktail', deleteCocktail);
 
 // ROUTES
 app.get('/', renderHome);
 app.get('/search', searchCocktails);
 app.post('/search/cocktails', getCocktailsByBase);
 app.post('/view', getCocktailsByName);
-app.get('/database/recipe-book', renderRecipeBookPage);
+app.get('/recipe-book', renderRecipeBookPage);
+app.post('/recipe-book', insertIntoDatabase);
 // app.post('/searches', getBookInfo);
 // app.post('/', insertIntoDatabase);
 // app.get('/books/:book_isbn', getOneBook);
@@ -31,7 +33,6 @@ function renderRecipeBookPage(request, response) {
   client.query(sql)
     .then(results => {
       let cocktails = results.rows;
-      console.log(cocktails);
       response.render('database/recipe-book', { cocktailArray: cocktails })
     })
 }
@@ -72,9 +73,37 @@ function getCocktailsByName(request, response) {
   })
 }
 
+function insertIntoDatabase(request, response){
+  console.log(request.body.id);
+  console.log(request.body.title);
+  console.log(request.body.image_url);
+  console.log(request.body.instructions);
+  console.log(request.body.ingredients);
+
+  let sql = 'INSERT INTO cocktails (cocktail_id, title, image_url, instructions, ingredients) VALUES ($1, $2, $3, $4, $5);';
+  let safeValues = [request.body.id, request.body.title, request.body.image_url, request.body.instructions, request.body.ingredients];
+
+  client.query(sql, safeValues);
+
+  response.redirect('/recipe-book');
+}
+
+function deleteCocktail(request, response){
+  let sql = `DELETE FROM cocktails WHERE cocktail_id = $1;`;
+  let id = request.body.cocktail_id;
+  let safeValues = [id];
+
+  client.query(sql, safeValues)
+    .then(() => {
+      response.redirect('/recipe-book');
+    })
+    .catch(error => {
+      handleError(error, response);
+    });
+}
 
 function Cocktail(obj, ingredientArray, measureArray) {
-  this.name = obj.strDrink;
+  this.title = obj.strDrink;
   this.image_url = obj.strDrinkThumb;
   this.id = obj.idDrink;
   this.instructions = obj.strInstructions;
