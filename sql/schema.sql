@@ -5,5 +5,6 @@ CREATE TABLE cocktails (
     title VARCHAR(255),
     image_url VARCHAR(255),
     instructions TEXT,
-    ingredients TEXT
+    ingredients TEXT,
+    cocktail_id VARCHAR(255)
   );

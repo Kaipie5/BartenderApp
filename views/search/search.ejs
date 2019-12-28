@@ -1,25 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Search for Drinks</title>
-</head>
+<%- include('../partials/head') %>
 
 <body>
-  <a>Search by Name</a>
+  <%- include('../partials/header') %>
+
   <form action='/view' method='post'>
+    <a>Search by Name</a>
     <input type="text" name="search" value="Enter cocktail name" required>
     <button type="submit">Search</button>
   </form>
   <div id="base-selectors">
-    <section>
-      <a> VODKA </a>
+    <p>Search by Base Liquor</p>
+    <section class="base-selector-tile">
       <form action='/search/cocktails' method='post'>
         <input type="hidden" name="search" value="Vodka" required>
-        <button type="submit">Vodka</button>
+        <button class="button" type="submit">Vodka</button>
+      </form>
+    </section>
+    <section class="base-selector-tile">
+      <form action='/search/cocktails' method='post'>
+        <input type="hidden" name="search" value="Gin" required>
+        <button class="button" type="submit">Gin</button>
+      </form>
+    </section>
+    <section class="base-selector-tile">
+      <form action='/search/cocktails' method='post'>
+        <input type="hidden" name="search" value="Whiskey" required>
+        <button class="button" type="submit">Whiskey</button>
+      </form>
+    </section>
+    <section class="base-selector-tile">
+      <form action='/search/cocktails' method='post'>
+        <input type="hidden" name="search" value="Rum" required>
+        <button class="button" type="submit">Rum</button>
       </form>
     </section>
     <!-- <section>
