@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS cocktails;
-CREATE TABLE "cocktails" (
-  "id" VARCHAR(255) PRIMARY KEY,
+DROP TABLE IF EXISTS cocktails CASCADE;
+CREATE TABLE cocktails (
+  "cocktail_id" VARCHAR(255) PRIMARY KEY NOT NULL UNIQUE,
   "name" VARCHAR(255),
   "description" TEXT,
   "image_url" VARCHAR(255),
@@ -10,41 +10,41 @@ CREATE TABLE "cocktails" (
 
 DROP TABLE IF EXISTS cocktail_lists;
 
-CREATE TABLE "cocktail_lists" (
-  "id" VARCHAR(255) PRIMARY KEY,
+CREATE TABLE cocktail_lists (
+  "cocktail_list_id" VARCHAR(255) PRIMARY KEY NOT NULL UNIQUE,
   "list_name" VARCHAR(255),
   "summary" TEXT,
-  "user" VARCHAR(255)
+  "user_id" VARCHAR(255)
 );
 
 DROP TABLE IF EXISTS users;
 CREATE TABLE "users" (
-  "name" VARCHAR(255) PRIMARY KEY
+  "user_name" VARCHAR(255) PRIMARY KEY NOT NULL UNIQUE
 );
 
 DROP TABLE IF EXISTS ingredients;
 CREATE TABLE "ingredients" (
-  "id" VARCHAR(255) PRIMARY KEY,
+  "ingredient_id" VARCHAR(255) PRIMARY KEY NOT NULL UNIQUE,
   "name" VARCHAR(255),
   "cocktail" VARCHAR(255)
 );
 
 
--- THESE ALTER TABLES MIGHT BE A LITTLE WRONG I NEED TO RESAVE THE FILE FROM THE GRAPHICAL REPRESENATION
-ALTER TABLE "cocktail_lists" ADD FOREIGN KEY ("id") REFERENCES "cocktails" ("cocktail_list");
+ALTER TABLE cocktails ADD CONSTRAINT fk_cocktail_lists FOREIGN KEY (cocktail_list) REFERENCES cocktail_lists(cocktail_list_id);
 
-ALTER TABLE "cocktails" ADD FOREIGN KEY ("id") REFERENCES "ingredients" ("cocktail");
+ALTER TABLE ingredients ADD CONSTRAINT fk_cocktail FOREIGN KEY (cocktail) REFERENCES cocktails(cocktail_id);
 
-ALTER TABLE "users" ADD FOREIGN KEY ("name") REFERENCES "cocktail_lists" ("user");
+ALTER TABLE cocktail_lists ADD CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES users(user_name);
 
 
-INSERT INTO users (name) VALUES('user_test1')
+INSERT INTO users (user_name) VALUES('user_test1');
 
-INSERT INTO cocktails_lists ( id, list_name, summary, user ) 
-VALUES("cocktail_test1", 'All', 'A list of all cockatails.', "user_test1");
+INSERT INTO cocktail_lists ( cocktail_list_id, list_name, summary, user_id ) VALUES('cocktail_test1', 'All', 'A list of all cockatails.', 'user_test1');
 
-INSERT INTO cocktails ( id, name, description, image_url, recipe, cocktail_list) 
-VALUES('cocktail1', 'Cockadoodledoo', 'A fizzy bag of fun', '', 'Fizz it, then bag it', 'cocktail_test1');
+INSERT INTO cocktails ( cocktail_id, name, description, image_url, recipe, cocktail_list) VALUES('cocktail1', 'Cockadoodledoo', 'A fizzy bag of fun', '', 'Fizz it, then bag it', 'cocktail_test1');
 
-INSERT INTO ingredients (id, name, cocktail) VALUES("ingriedient_test1", 'Fizz', 'cocktail1')
-INSERT INTO ingredients (id, name, cocktail) VALUES("ingriedient_test2", 'Bag', 'cocktail1')
+INSERT INTO ingredients (ingredient_id, name, cocktail) VALUES('ingriedient_test1', 'Fizz', 'cocktail1');
+INSERT INTO ingredients (ingredient_id, name, cocktail) VALUES('ingriedient_test2', 'Bag', 'cocktail1');
+
+--EXAMPLE QUERIES:
+
