@@ -6,6 +6,25 @@ const client = require('../lib/client');
 
 module.exports = {
   getCocktailsByBase: function(request, response) {
+
+    let baseLiquer = ["Light rum", "Applejack", "Gin", "Dark rum", "Sweet Vermouth", "Strawberry schnapps", "Scotch", "Apricot brandy", "Triple sec", "Southern Comfort", "Orange bitters", "Brandy", "Lemon vodka", "Blended whiskey", "Dry Vermouth", "Amaretto", "Champagne", "Coffee liqueur", "Bourbon", "Tequila", "Vodka", "Añejo rum", "Bitters", "Kahlua", "Dubonnet Rouge", "Irish whiskey", "Apple brandy", "Cherry brandy", "Creme de Cacao", "Port", "Coffee brandy", "Red wine", "Rum", "Ricard", "Sherry", "Cognac", "Sloe gin", "Galliano", "Peach Vodka", "Ouzo", "Spiced rum", "Angelica root", "Johnnie Walker", "Everclear", "Firewater", "Lager", "Whiskey", "Absolut Citron", "Pisco", "Irish cream", "Ale", "Chocolate liqueur", "Midori melon liqueur", "Sambuca", "Blackberry brandy", "Peppermint schnapps", "Creme de Cassis", "Jack Daniels"];
+
+    let i = 0;
+    baseLiquer.forEach(base =>{
+  //     console.log(base);
+  //     console.log(request.body.search);
+      if(base.toLowerCase().includes(request.body.search.toLowerCase())){
+        superagent.get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${base}`).then(responseFromSuper => {
+        let arr = responseFromSuper.body.drinks.map(cocktail => {
+          return new cocktailConstructor.SearchCocktail(cocktail);
+        });
+        // console.log(arr);
+        // console.log(i);
+        response.render('search/search-results-base', { arr: arr });
+      })
+      }
+    })
+
     superagent.get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${request.body.search}`).then(responseFromSuper => {
       let arr = responseFromSuper.body.drinks.map(cocktail => {
         return new cocktailConstructor.SearchCocktail(cocktail);
