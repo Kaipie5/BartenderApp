@@ -27,6 +27,9 @@
     width: 375px;
 }
 /* login */
+html{
+    height: 100%;
+}
 body {
     background-image: url('images/open-bar.png');
     background-position: center;
@@ -35,7 +38,7 @@ body {
 }
 body main {
     background-color: rgb(252, 248, 246);
-    height: 1000px;
+    height: 100%;
     margin-left: 200px;
     margin-right: 200px;
 }
@@ -57,7 +60,7 @@ body main {
 #nav ul li a {
     display: block;
     text-decoration: none;
-    color: black;
+    color: white;
     padding: 0.5em 1.5em 0.5em 1.5em;
     text-decoration: none;
 }
@@ -76,7 +79,7 @@ body main {
 .navbar div{
     height: 8px;
     width: 60px;
-    background-color: rgb(104, 104, 104);
+    background-color: white;
     position: absolute;
     transition: all 0.5s ease;
 }
@@ -115,6 +118,7 @@ body main {
     transition: all 0.3s ease;  
 }
 .wrapper ul {
+    height: 0px;
     visibility: hidden;
 }
 .wrapper:hover ul {
@@ -144,6 +148,11 @@ body main {
     margin: 20px;
     border-radius: 125px;
   }
+/*  SEARCH  */
+#search-by-name{
+
+
+}
 
 /* BASE SELECTOR TILES */
 #base-selectors{
