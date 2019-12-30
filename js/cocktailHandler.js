@@ -8,7 +8,6 @@ module.exports = {
   getCocktailsByBase: function(request, response) {
     superagent.get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${request.body.search}`).then(responseFromSuper => {
       let arr = responseFromSuper.body.drinks.map(cocktail => {
-        console.log(cocktail)
         return new cocktailConstructor.SearchCocktail(cocktail);
       });
       response.render('search/search-results-base', { arr: arr });
@@ -17,7 +16,6 @@ module.exports = {
    getCocktailsByName: function(request, response) {
     superagent.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${request.body.search}`).then(responseFromSuper => {
       let filteredResult = responseFromSuper.body.drinks;
-      console.log(filteredResult[0]);
       let ingredientArray = [];
       let measureArray = [];
       for (let [K, V] of Object.entries(filteredResult[0])) {
@@ -34,17 +32,12 @@ module.exports = {
       client.query(sql, safeValues)
         .then(results => {
           let cocktailLists = results.rows;
-          console.log('Lists:', cocktailLists)
+          // console.log('Lists:', cocktailLists)
           response.render('view', { cocktail: cocktail , cocktailLists: cocktailLists});
       })
     })
   },
    insertIntoDatabase: function(request, response) {
-    console.log(request.body.id);
-    console.log(request.body.title);
-    console.log(request.body.image_url);
-    console.log(request.body.instructions);
-    console.log(request.body.ingredients);
   
     let sql = "SELECT * FROM cocktail_lists WHERE user_id=$1 AND list_name=$2;"
     let safeValues = [global.username, request.body.cocktailList]

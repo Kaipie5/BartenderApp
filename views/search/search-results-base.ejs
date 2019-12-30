@@ -3,8 +3,15 @@
 <%- include('../partials/head') %>
 
 <body>
-    <h1 id="search-results-title">Search Results:</h1>
     <%- include('../partials/header') %>
+    <form action='/search/cocktails/extra' method='post'>
+        <% arr.forEach(cocktail => { %>
+            <input type="hidden" name="cocktail[]" value=<%= cocktail.name %>/>
+        <% }) %>
+        <input type="text" name="search" required>
+        <button class="small-button" type="submit">Search Extra Ingredient</button>
+      </form>
+    <h1 id="search-results-title">Search Results:</h1>
     <div id="search-results">
         <% arr.forEach(cocktail => { %>
         <img src=<%= cocktail.image_url %>>
