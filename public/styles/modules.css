@@ -27,7 +27,7 @@
     width: 375px;
 }
 /* login */
-html{
+view{
     height: 100%;
 }
 body {
@@ -52,7 +52,7 @@ body main {
     background-color: rgb(184, 184, 184);
     width: 200px;
     height: 200px;
-    color: white;
+    color: rgb(252, 248, 246);
     font-size: 20pt;
 }
 
@@ -60,7 +60,7 @@ body main {
 #nav ul li a {
     display: block;
     text-decoration: none;
-    color: white;
+    color: rgb(252, 248, 246);
     padding: 0.5em 1.5em 0.5em 1.5em;
     text-decoration: none;
 }
@@ -79,7 +79,7 @@ body main {
 .navbar div{
     height: 8px;
     width: 60px;
-    background-color: white;
+    background-color: rgb(252, 248, 246);
     position: absolute;
     transition: all 0.5s ease;
 }
@@ -120,9 +120,16 @@ body main {
 .wrapper ul {
     height: 0px;
     visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .wrapper:hover ul {
     visibility: visible;
+    background-color: rgb(184, 184, 184);
+    width: 200px;
+    height: 350px;
+    border-radius: 10px;
 }
 
 /* HOME */
@@ -137,7 +144,7 @@ body main {
 .button-home {
     background-color: rgb(184, 184, 184); /* Green */
     border: none;
-    color: white;
+    color: rgb(252, 248, 246);
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
@@ -168,7 +175,7 @@ body main {
 .button {
     background-color: rgb(184, 184, 184); 
     border: none;
-    color: white;
+    color: rgb(252, 248, 246);
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
@@ -184,7 +191,7 @@ body main {
   .small-button {
     border: none;
     background-color: rgb(184, 184, 184);
-    color: white;
+    color: rgb(252, 248, 246);
     padding: 15px 32px;
     text-decoration: none;
     display: inline-block;
