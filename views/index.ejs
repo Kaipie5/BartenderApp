@@ -3,12 +3,15 @@
 <%- include('./partials/head') %>
 
 <body>
-  <%- include('./partials/header') %>
-  <container id="home-option-tiles-container">
-    <div id="home-option-tiles-div">
-      <button class="button-home" onclick="location.href = 'search';">Go to search</button>
-      <button class="button-home" onclick="location.href = 'recipe-book';">Go to recipe book</button>
-      <button class="button-home" onclick="location.href = 'about-devs';">About devs</button>
+
+  <container>
+    <div>
+      <form action='/login' method='post'>
+        <a>Please input your user name</a>
+        <input type="text" name="userName" required>
+        <button type="submit">Log In</button>
+      </form>
+
     </div>
   </container>
 </body>

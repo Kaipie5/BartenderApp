@@ -5,11 +5,14 @@
 <body>
   <%- include('../partials/header') %>
 
-  <h2> Recipe Book </h2>
+  <h2> <%=username%>'s Recipe Book </h2>
   <h4>
     View recipes for drinks you've saved, create recipe books
-    for special occassions, and even update your current reipes based on personal taste!
+    for special occassions, and even update your current recipes based on personal taste!
   </h4>
+  <!-- <form action="<%= '/newCocktailList' %>" method="get">
+    <button type="submit">Create new Cocktail List</button>
+  </form> -->
   <% cocktailArray.forEach(cocktail => { %>
   <ul>
     <img src=<%= cocktail.image_url %>>
@@ -21,7 +24,7 @@
     <p><%= cocktail.instructions %></p>
   </ul>
   <form action="<%= '/delete/deletecocktail?_method=DELETE' %>" method="post">
-    <input type="hidden" name="cocktail_id" value="<%= cocktail.cocktail_id %>">
+    <input type="hidden" name="cocktail_id" value="<%= cocktail.id %>">
     <button type="submit">delete</button>
   </form>
   <% }) %>

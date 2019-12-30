@@ -13,12 +13,17 @@
         <p><%= cocktail.instructions %></p>
     </ul>
     <div id="<%= cocktail.id %>">
-        <form action='/recipe-book' method='post' id=cocktail>
+        <form action='/insertcocktail' method='post' id=cocktail>
             <input type="hidden" name="id" value="<%= cocktail.id %>">
             <input type="hidden" name="title" value="<%= cocktail.title %>">
             <input type="hidden" name="image_url" value="<%= cocktail.image_url %>">
             <input type="hidden" name="instructions" value="<%= cocktail.instructions %>">
             <input type="hidden" name="ingredients" value="<%= cocktail.ingredients %>">
+            <select name="cocktailList">
+                <% cocktailLists.forEach(cocktailList => { %>
+                    <option value ="<%= cocktailList.list_name %>"><%= cocktailList.list_name %></option>
+                <% }) %>
+            </select>
             <button class="small-button" type="submit">Save to recipe book</button>
         </form>
     </div>
