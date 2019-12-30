@@ -27,6 +27,7 @@
     width: 375px;
 }
 /* login */
+
 view{
     height: 100%;
 }
@@ -34,9 +35,9 @@ body {
     background-image: url('images/open-bar.png');
     background-position: center;
     background-repeat: repeat;
-    background-size: 800px ;
+    min-height: 100%;
 }
-body main {
+main {
     background-color: rgb(252, 248, 246);
     height: 100%;
     margin-left: 200px;
@@ -133,33 +134,18 @@ body main {
 }
 
 /* HOME */
-#home-option-tiles-container {
-    display: flex;
-    justify-content: center;
+#greeting p{
+    padding-top: 100px;
+    font-size: 20pt;
+    opacity: 60%;
 }
-#home-option-tiles-div {
-    display: flex;
-    flex-direction: column;
+#button-div-home {
+
 }
-.button-home {
-    background-color: rgb(184, 184, 184); /* Green */
-    border: none;
-    color: rgb(252, 248, 246);
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 24px;
-    width: 250px;
-    height: 250px;
-    margin: 20px;
-    border-radius: 125px;
+  #home-main{
+    height: 1000px;
   }
-/*  SEARCH  */
-#search-by-name{
 
-
-}
 
 /* BASE SELECTOR TILES */
 #base-selectors{
@@ -207,6 +193,6 @@ body main {
     height: 35%;
 }
 #search-results-title {
-    margin-top: 20px;
+    padding-top: 20px;
 }
 
