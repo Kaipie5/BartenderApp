@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('./partials/head') %>
+<%- include('./partials/header') %>
 
 <body>
-  <container>
-    <div>
-      <form action='/login' method='post'>
-        <a>Please input your user name</a>
-        <input type="text" name="userName" required>
-        <button type="submit">Log In</button>
-      </form>
-    </div>
-  </container>
+  <main>
+    <container>
+      <div id="login-form">
+        <form action='/login' method='post'>
+          <a>Please input your user name</a><br />
+          <input type="text" name="userName" required>
+          <button type="submit">Log In</button>
+        </form>
+      </div>
+    </container>
+  </main>
 </body>
 
 </html>

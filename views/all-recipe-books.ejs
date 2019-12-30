@@ -3,22 +3,24 @@
 <%- include('./partials/head') %>
 
 <body>
-  <%- include('./partials/header') %>
+  <main>
+    <%- include('./partials/header') %>
 
-  <h2> <%=username%>'s Recipe Books </h2>
-  <h4>
-  </h4>
-  
-  <% cocktailLists.forEach(cocktailList => { %>
+    <h2> <%=username%>'s Recipe Books </h2>
+    <h4>
+    </h4>
+
+    <% cocktailLists.forEach(cocktailList => { %>
     <form action="<%= `/recipe-book/${cocktailList.list_name}`%>" method="get">
-        <button type="submit"><%= cocktailList.list_name %></button>
-      </form>
+      <button type="submit"><%= cocktailList.list_name %></button>
+    </form>
     <% }) %>
 
     <form action="<%= '/newCocktailList' %>" method="post">
-        <input type="text" name="listName" value="Please Enter List Name">
-        <button type="submit">Create new Cocktail List</button>
-      </form>
+      <input type="text" name="listName" value="Please Enter List Name">
+      <button type="submit">Create new Cocktail List</button>
+    </form>
+  </main>
 </body>
 
 </html>
