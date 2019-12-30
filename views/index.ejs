@@ -4,11 +4,11 @@
 
 <body>
   <%- include('./partials/header') %>
-  <container>
-    <div>
-      <button onclick="location.href = 'search';">Go to search</button>
-      <button onclick="location.href = 'recipe-book';">Go to recipe book</button>
-      <button onclick="location.href = 'about-devs';">About devs</button>
+  <container id="home-option-tiles-container">
+    <div id="home-option-tiles-div">
+      <button class="button-home" onclick="location.href = 'search';">Go to search</button>
+      <button class="button-home" onclick="location.href = 'recipe-book';">Go to recipe book</button>
+      <button class="button-home" onclick="location.href = 'about-devs';">About devs</button>
     </div>
   </container>
 </body>
