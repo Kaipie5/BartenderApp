@@ -4,6 +4,8 @@
 
 <body>
     <%- include('../partials/header') %>
+    
+    <main>
     <form action='/search/cocktails/extra' method='post'>
         <% arr.forEach(cocktail => { %>
             <input type="hidden" name="cocktail[]" value=<%= cocktail.name %>/>
@@ -23,6 +25,7 @@
         </form>
         <% }) %>
     </div>
+    </main>
 </body>
 
 </html>

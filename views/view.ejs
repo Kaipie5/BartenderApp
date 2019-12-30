@@ -2,31 +2,33 @@
 <html lang="en">
 <%- include('./partials/head') %>
 
-<body>
-    <%- include('./partials/header') %>
-    <ul>
-        <h1><%= cocktail.title %></h1>
-        <img src=<%= cocktail.image_url %>>
-        <h1>Ingredients: </h1>
-        <p><%= cocktail.ingredients %></p>
-        <h2>Instructions: </h2>
-        <p><%= cocktail.instructions %></p>
-    </ul>
-    <div id="<%= cocktail.id %>">
-        <form action='/insertcocktail' method='post' id=cocktail>
-            <input type="hidden" name="id" value="<%= cocktail.id %>">
-            <input type="hidden" name="title" value="<%= cocktail.title %>">
-            <input type="hidden" name="image_url" value="<%= cocktail.image_url %>">
-            <input type="hidden" name="instructions" value="<%= cocktail.instructions %>">
-            <input type="hidden" name="ingredients" value="<%= cocktail.ingredients %>">
-            <select name="cocktailList">
-                <% cocktailLists.forEach(cocktailList => { %>
-                    <option value ="<%= cocktailList.list_name %>"><%= cocktailList.list_name %></option>
-                <% }) %>
-            </select>
-            <button class="small-button" type="submit">Save to recipe book</button>
-        </form>
-    </div>
+<body id="view-body">
+    <main>
+        <%- include('./partials/header') %>
+        <ul>
+            <h1 id="view-page-title"><%= cocktail.title %></h1>
+            <img src=<%= cocktail.image_url %>>
+            <h1>Ingredients: </h1>
+            <p><%= cocktail.ingredients %></p>
+            <h2>Instructions: </h2>
+            <p><%= cocktail.instructions %></p>
+        </ul>
+        <div id="<%= cocktail.id %>">
+            <form action='/insertcocktail' method='post' id=cocktail>
+                <input type="hidden" name="id" value="<%= cocktail.id %>">
+                <input type="hidden" name="title" value="<%= cocktail.title %>">
+                <input type="hidden" name="image_url" value="<%= cocktail.image_url %>">
+                <input type="hidden" name="instructions" value="<%= cocktail.instructions %>">
+                <input type="hidden" name="ingredients" value="<%= cocktail.ingredients %>">
+                <select name="cocktailList">
+                    <% cocktailLists.forEach(cocktailList => { %>
+                    <option value="<%= cocktailList.list_name %>"><%= cocktailList.list_name %></option>
+                    <% }) %>
+                </select>
+                <button class="small-button" type="submit">Save to recipe book</button>
+            </form>
+        </div>
+    </main>
 </body>
 
 </html>
