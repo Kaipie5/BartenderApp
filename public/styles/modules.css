@@ -26,6 +26,32 @@
     top: 0;
     width: 375px;
 }
+/* login */
+body {
+    background-image: url('images/open-bar.png');
+    background-position: center;
+    background-repeat: repeat;
+    background-size: 800px ;
+}
+body main {
+    background-color: rgb(252, 248, 246);
+    height: 1000px;
+    margin-left: 200px;
+    margin-right: 200px;
+}
+#login-form {
+    display: flex;
+    justify-content: center;
+}
+#login-form form {
+    margin-top: 200px;
+    padding: 30px;
+    background-color: rgb(184, 184, 184);
+    width: 200px;
+    height: 200px;
+    color: white;
+    font-size: 20pt;
+}
 
 /* NAVBAR/HABURGER RULES */
 #nav ul li a {
@@ -131,7 +157,7 @@
     justify-content: center;
 }
 .button {
-    background-color: rgb(184, 184, 184); /* Green */
+    background-color: rgb(184, 184, 184); 
     border: none;
     color: white;
     padding: 15px 32px;
@@ -167,3 +193,4 @@
 #search-results-title {
     margin-top: 20px;
 }
+
