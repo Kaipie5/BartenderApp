@@ -7,8 +7,6 @@
     <%- include('./partials/header') %>
 
     <h2> <%=username%>'s Recipe Books </h2>
-    <h4>
-    </h4>
 
     <% cocktailLists.forEach(cocktailList => { %>
     <form action="<%= `/recipe-book/${cocktailList.list_name}`%>" method="get">
