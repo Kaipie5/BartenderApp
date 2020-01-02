@@ -12,13 +12,16 @@ function renderRecipeBookPage(request, response) {
         console.log("LIST SELECT RESULTS", results.rows)
         let sql2 = "SELECT * FROM cocktails WHERE cocktail_list=$1;";
         let safeValues2 = [results.rows[0].cocktail_list_id]
-    
+        
+        let listName = results.rows[0].list_name
+        console.log("LIST NAME", listName)
+
         client.query(sql2, safeValues2)
           .then(results => {
             let cocktails = results.rows;
             console.log(cocktails[0])
             console.log("username:", global.username)
-            response.render('database/recipe-book', { cocktailArray: cocktails, username: global.username})
+            response.render('database/recipe-book', { cocktailArray: cocktails, username: global.username, listName: listName})
           })
       })
     
