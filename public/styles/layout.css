@@ -40,3 +40,11 @@ h6, .h6 {
 	font: inherit;
 }
 
+.aboutPictures {
+	width: 75%;
+	object-fit: cover;
+}
+h1 {
+	width: 75%;
+	margin: auto;
+}
