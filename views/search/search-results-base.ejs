@@ -10,7 +10,7 @@
         <% arr.forEach(cocktail => { %>
             <input type="hidden" name="cocktail[]" value="<%= cocktail.name %>"/>
         <% }) %>
-        <select name="ingredients">
+        <select name="ingredient">
         <% arr2.forEach(ingredient => { %>
             <option value="<%= ingredient %>"><%= ingredient %></option>
           <% }) %>
