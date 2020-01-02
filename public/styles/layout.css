@@ -1,18 +1,35 @@
+view{
+	height: 100%;
+}
 body {
 	height: 100%;
 	font-family: 'Lato', sans-serif;
-	background-color: #fff2ef56;
 	background-attachment: fixed;
 	text-align: center;
+	background-image: url('images/open-bar.png');
+  background-position: center;
+  background-repeat: repeat;
+  min-height: 100%;
   }
-
-.container {
+main {
+  background-color: rgb(252, 248, 246);
+  height: 100%;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+#index-main {
+	height: 1000px;
+}
+#index-body {
+	height: 100%;
+}
+/* .container {
 	height: 1065px;
 	display: grid;
 	grid-template-columns: 50%;
 	grid-template-rows: 1/7;
 	grid-auto-flow: row;
-  }
+  } */
 
 h1, .h1,
 h2, .h2,
@@ -22,3 +39,4 @@ h5, .h5,
 h6, .h6 {
 	font: inherit;
 }
+

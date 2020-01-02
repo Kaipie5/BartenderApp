@@ -1,5 +1,6 @@
+
+/* for hamburger menu */
 #header {
-    display: -webkit-flex;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -10,25 +11,9 @@
     position: fixed;
     text-align: right;
     top: 0;
-    width: 375px;
+    width: 35%;
 }
 
-/* login */
-view{
-    height: 100%;
-}
-body {
-    background-image: url('images/open-bar.png');
-    background-position: center;
-    background-repeat: repeat;
-    min-height: 100%;
-}
-main {
-    background-color: rgb(252, 248, 246);
-    height: 100%;
-    margin-left: 200px;
-    margin-right: 200px;
-}
 #login-form {
     display: flex;
     justify-content: center;
@@ -54,10 +39,10 @@ main {
 .wrapper{
     position: absolute;
     left: 10%;
-    width: 100px;
+    width: 20%;
 }
 .navbar{
-    width: 100px;
+    width: 20%;
     height: 100px;
     position: relative;
     cursor: pointer;
@@ -84,7 +69,7 @@ main {
     top: 65px;
     left: 20px;
 }
-/* hover */
+/* navbar hover */
 .navbar:hover .first {
     transform: translateY(20px) rotate(45deg);
     transition: all 0.5s ease;
@@ -114,8 +99,8 @@ main {
 .wrapper:hover ul {
     visibility: visible;
     background-color: rgb(184, 184, 184);
-    width: 200px;
-    height: 350px;
+    width: 150px;
+    height: 200px;
     border-radius: 10px;
 }
 
@@ -126,10 +111,11 @@ main {
     opacity: 60%;
 }
 
-  #home-main{
+#home-main{
     height: 1000px;
-  }
-
+    display: flex;
+    justify-content: center;
+}
 
 /* BASE SELECTOR TILES */
 #base-selectors{
@@ -142,6 +128,8 @@ main {
     display: flex;
     justify-content: center;
 }
+
+/* button */
 .button {
     background-color: rgb(184, 184, 184); 
     border: none;
@@ -157,8 +145,8 @@ main {
     border-radius: 125px;
   }
 
-  /* small button */
-  .small-button {
+/* small button */
+.small-button {
     border: none;
     background-color: rgb(184, 184, 184);
     color: rgb(252, 248, 246);
@@ -168,7 +156,7 @@ main {
     font-size: 16px;
     margin: 10px;
     border-radius: 5px;
-  }
+}
 
 /* SEARCH RESULTS */
 #search-results img {
@@ -178,4 +166,49 @@ main {
 }
 #search-results-title {
     padding-top: 20px;
+}
+
+/* view */
+img{
+    width: 500px;
+}
+main ul {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+#recipe-book-intro {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+/* edit form */
+
+.editForm {
+    display: flex;
+    justify-content: center;
+}
+textarea{
+    width: 70%;
+    margin-left: 10px;
+}
+
+
+					/* MEDIA RULES */
+@media (max-width: 930px) {
+    .small-button {
+        padding: 20px 15px;
+    }
+    .wrapper:hover ul {
+        width: 100px;
+        height: 250px;
+        border-radius: 10px;
+    }
+    #button-div-home {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    img {
+        width: 90%;
+    }
 }
