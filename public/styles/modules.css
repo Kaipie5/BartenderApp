@@ -11,7 +11,7 @@
     position: fixed;
     text-align: right;
     top: 0;
-    width: 35%;
+    width: 20%;
 }
 
 #login-form {
@@ -40,6 +40,7 @@
     position: absolute;
     left: 10%;
     width: 20%;
+    height: 200px;
 }
 .navbar{
     width: 20%;
@@ -197,6 +198,12 @@ textarea, input{
     justify-content: center;
 } */
 
+#button-div-home {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+}
 
 					/* MEDIA RULES */
 @media (max-width: 930px) {
@@ -207,11 +214,6 @@ textarea, input{
         width: 100px;
         height: 250px;
         border-radius: 10px;
-    }
-    #button-div-home {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
     }
     img {
         width: 90%;
