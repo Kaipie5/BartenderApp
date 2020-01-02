@@ -9,7 +9,9 @@ module.exports = {
 
     let baseLiquer = ["Light rum", "Applejack", "Gin", "Dark rum", "Sweet Vermouth", "Strawberry schnapps", "Scotch", "Apricot brandy", "Triple sec", "Southern Comfort", "Orange bitters", "Brandy", "Lemon vodka", "Blended whiskey", "Dry Vermouth", "Amaretto", "Champagne", "Coffee liqueur", "Bourbon", "Tequila", "Vodka", "Bitters", "Kahlua", "Dubonnet Rouge", "Irish whiskey", "Apple brandy", "Cherry brandy", "Creme de Cacao", "Port", "Coffee brandy", "Red wine", "Rum", "Ricard", "Sherry", "Cognac", "Sloe gin", "Galliano", "Peach Vodka", "Ouzo", "Spiced rum", "Angelica root", "Johnnie Walker", "Everclear", "Firewater", "Lager", "Whiskey", "Absolut Citron", "Pisco", "Irish cream", "Ale", "Chocolate liqueur", "Midori melon liqueur", "Sambuca", "Blackberry brandy", "Peppermint schnapps", "Creme de Cassis", "Jack Daniels"];
 
-    let ingredients = ["Light rum", "Applejack", "Gin", "Dark rum", "Sweet Vermouth", "Strawberry schnapps", "Scotch", "Apricot brandy", "Triple sec", "Southern Comfort", "Orange bitters", "Brandy", "Lemon vodka", "Blended whiskey", "Dry Vermouth", "Amaretto", "Champagne", "Coffee liqueur", "Bourbon", "Tequila", "Vodka", "Añejo rum", "Bitters", "Kahlua", "Dubonnet Rouge", "Irish whiskey", "Apple brandy", "Cherry brandy", "Creme de Cacao", "Port", "Coffee brandy", "Red wine", "Rum", "Ricard", "Sherry", "Cognac", "Sloe gin", "Galliano", "Peach Vodka", "Ouzo", "Spiced rum", "Angelica root", "Johnnie Walker", "Everclear", "Firewater", "Lager", "Whiskey", "Absolut Citron", "Pisco", "Irish cream", "Ale", "Chocolate liqueur", "Midori melon liqueur", "Sambuca", "Blackberry brandy", "Peppermint schnapps", "Creme de Cassis", "Jack Daniels", "Lime juice", "demerara Sugar", "Sugar", "Tea", "Grenadine", "Grapefruit juice", "Carbonated water", "Apple juice", "Pineapple juice", "Lemon juice", "Sugar syrup", "Milk", "Strawberries", "Chocolate syrup", "Yoghurt", "Mango", "Ginger", "Lime", "Cantaloupe", "Berries", "Grapes", "Kiwi", "Tomato juice", "Cocoa powder", "Chocolate", "Heavy cream", "Coffee", "Water", "Espresso", "Orange", "Cranberries", "Apple cider", "Cranberry juice", "Egg yolk", "Egg", "Grape juice", "Peach nectar", "Lemon", "Lemonade", "Cider", "Sprite", "7-Up"]
+    let ingredients = ["Lime juice", "demerara Sugar", "Sugar", "Tea", "Grenadine", "Grapefruit juice", "Carbonated water", "Apple juice", "Pineapple juice", "Lemon juice", "Sugar syrup", "Milk", "Strawberries", "Chocolate syrup", "Yoghurt", "Mango", "Ginger", "Lime", "Cantaloupe", "Berries", "Grapes", "Kiwi", "Tomato juice", "Cocoa powder", "Chocolate", "Heavy cream", "Coffee", "Water", "Espresso", "Orange", "Cranberries", "Apple cider", "Cranberry juice", "Egg yolk", "Egg", "Grape juice", "Peach nectar", "Lemon", "Lemonade", "Cider", "Sprite", "7-Up"];
+
+    ingredients = ingredients.concat(baseLiquer);
 
     const arr = [];
     baseLiquer.forEach(base =>{
@@ -23,14 +25,22 @@ module.exports = {
             let arr = responseFromSuper[i].body.drinks.map(cocktail => {
               return new cocktailConstructor.SearchCocktail(cocktail);
           })
-        arr2 = arr2.concat(arr);
-
+        
+          // Checks for duplicates before adding
+        arr.forEach(cocktail => {
+          if (arr2.length != 0){
+            arr2.some(cocktail2 => cocktail2.name === cocktail.name ? arr2 : arr2.push(cocktail));
+          }
+          else{
+            arr2.push(cocktail);
+          }
+        })
       }
-      // Need to sort it, somehow
-      // arr2 = arr2.sort(function(a, b) {
-      //   return a.name - b.name;
-      // });
-      // console.log(arr2);
+
+      // Sorts cocktails in alphabetical order
+      arr2 = arr2.sort(function(a, b) {
+          return ('' + a.name).localeCompare(b.name);
+      });
       response.render('search/search-results-base', { arr: arr2, arr2: ingredients });
     })
   },
