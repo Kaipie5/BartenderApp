@@ -13,7 +13,6 @@
     top: 0;
     width: 35%;
 }
-/* login */
 
 #login-form {
     display: flex;
@@ -29,7 +28,7 @@
     font-size: 20pt;
 }
 
-/* NAVBAR/HABURGER RULES */
+/* NAVBAR/HAMBURGER RULES */
 #nav ul li a {
     display: block;
     text-decoration: none;
