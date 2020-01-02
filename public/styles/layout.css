@@ -39,7 +39,21 @@ h5, .h5,
 h6, .h6 {
 	font: inherit;
 }
-
+h1 {
+	font-size: 24pt;
+}
+h2 {
+	font-size: 20pt;
+}
+h3 {
+	font-size: 18pt;
+}
+h4 {
+	font-size: 14pt;
+}
+p {
+	font-size: 12pt;
+}
 .aboutPictures {
 	width: 75%;
 	object-fit: cover;

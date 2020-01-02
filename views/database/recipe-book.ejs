@@ -6,19 +6,19 @@
   <%- include('../partials/header') %>
   <main>
     <h2> <%=username%>'s <%= list.list_name %> Recipe Book </h2>
-    <h4 id="recipe-book-intro">
+    <p id="recipe-book-intro">
       View recipes for drinks you've saved, create recipe books
       for special occassions, and even update your current recipes based on personal taste!
-    </h4>
+    </p>
     <!-- <form action="<%= '/newCocktailList' %>" method="get">
     <button type="submit">Create new Cocktail List</button>
   </form> -->
     <% cocktailArray.forEach((cocktail, index) => { %>
     <ul>
       <img src=<%= cocktail.image_url %>>
-      <h2><%= cocktail.title %></h2>
+      <h3><%= cocktail.title %></h3>
       <p hidden id="cocktail-db-id-number"><%= cocktail.id %></p>
-      <h3>Ingredients: </h3>
+      <h4>Ingredients: </h4>
       <p><%= cocktail.ingredients %></p>
       <h4>Instructions: </h4>
       <p><%= cocktail.instructions %></p>

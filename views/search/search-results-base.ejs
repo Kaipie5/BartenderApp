@@ -4,33 +4,33 @@
 
 <body>
     <%- include('../partials/header') %>
-    
+
     <main>
-    <form action='/search/cocktails/extra' method='post'>
-        <% arr.forEach(cocktail => { %>
-            <input type="hidden" name="cocktail[]" value="<%= cocktail.name %>"/>
-        <% }) %>
-        <select name="ingredient">
-        <% arr2.forEach(ingredient => { %>
-            <option value="<%= ingredient %>"><%= ingredient %></option>
-          <% }) %>
-        </select>
-        <button class="small-button" type="submit">Search Extra Ingredient</button>
-      </form>
-    <h1 id="search-results-title">Search Results:</h1>
-    <h1>You have found <%= arr.length %> cocktail recipes.</h1>
-    <button onclick="location.href='/search';"  class="small-button">Return to Search</button>
-    <div id="search-results">
-        <% arr.forEach(cocktail => { %>
-        <img src=<%= cocktail.image_url %>>
-        <h2><%= cocktail.name %></h2>
-        <p hidden id="cocktail-db-id-number"><%= cocktail.id %></p>
-        <form action="/view" method="post">
-            <input type="hidden" name="search" value="<%= cocktail.name %>" required>
-            <button class="small-button" type="submit">View Recipe</button>
+        <form action='/search/cocktails/extra' method='post'>
+            <% arr.forEach(cocktail => { %>
+            <input type="hidden" name="cocktail[]" value="<%= cocktail.name %>" />
+            <% }) %>
+            <select name="ingredient">
+                <% arr2.forEach(ingredient => { %>
+                <option value="<%= ingredient %>"><%= ingredient %></option>
+                <% }) %>
+            </select>
+            <button class="small-button" type="submit">Search Extra Ingredient</button>
         </form>
-        <% }) %>
-    </div>
+        <h1 id="search-results-title">Search Results:</h1>
+        <p>You have found <%= arr.length %> cocktail recipes.</p>
+        <button onclick="location.href='/search';" class="small-button">Return to Search</button>
+        <div id="search-results">
+            <% arr.forEach(cocktail => { %>
+            <img src=<%= cocktail.image_url %>>
+            <h3><%= cocktail.name %></h3>
+            <p hidden id="cocktail-db-id-number"><%= cocktail.id %></p>
+            <form action="/view" method="post">
+                <input type="hidden" name="search" value="<%= cocktail.name %>" required>
+                <button class="small-button" type="submit">View Recipe</button>
+            </form>
+            <% }) %>
+        </div>
     </main>
 </body>
 

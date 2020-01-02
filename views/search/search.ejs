@@ -5,18 +5,18 @@
 
 <body>
   <%- include('../partials/header') %>
-  
+
   <main>
     <div id="search-by-name">
       <form action='/view' method='post'>
-        <a>Search by Cocktail Name</a>
+        <h3>Search by Cocktail Name</h3>
         <input type="text" name="search" required>
         <button type="submit">Search</button>
       </form>
     </div>
 
     <div id="base-selectors">
-      <p>Search by Base Liquor</p>
+      <h3>Search by Base Liquor</h3>
       <section class="base-selector-tile">
         <form action='/search/cocktails' method='post'>
           <input type="hidden" name="search" value="Vodka" required>
