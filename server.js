@@ -15,13 +15,13 @@ app.use(express.urlencoded({ extended: true, }));
 app.use(methodOverride('_method'));
 
 
-const renderHome = require('./js/home');
-const searchCocktails  = require('./js/search')
-const cocktailHandler = require('./js/cocktailHandler.js')
-const recipeBook = require('./js/recipe-book')
-const loginHandler = require('./js/loginHandler.js')
-const viewAllRecipeBooks = require('./js/all-recipe-books.js')
-const createNewCocktailList = require('./js/create-new-cocktail-list.js')
+const renderHome = require('./lib/home');
+const searchCocktails  = require('./lib/search')
+const cocktailHandler = require('./lib/cocktailHandler.js')
+const recipeBook = require('./lib/recipe-book')
+const loginHandler = require('./lib/loginHandler.js')
+const viewAllRecipeBooks = require('./lib/all-recipe-books.js')
+const createNewCocktailList = require('./lib/create-new-cocktail-list.js')
 
 
 // ROUTES

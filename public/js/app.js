@@ -5,11 +5,11 @@ $(document).ready(function() {
     console.log("TRYING TO HIDE")
     $('.editForm input').hide();
     $('.editForm textarea').hide();
-    $('.editForm select').hide();
+    $('.editForm button').hide();
 
 })
 
-const $newSelector = $('button')
+const $newSelector = $('.editButton')
 
 $newSelector.click(function() {
     let buttonNum = event.target.id
@@ -20,5 +20,5 @@ $newSelector.click(function() {
     console.log('.showEditForm' + idNum +' input')
     $('#showEditForm' + idNum +' input').show();
     $('#showEditForm' + idNum +' textarea').show();
-    $('#showEditForm' + idNum +' select').show();
+    $('#showEditForm' + idNum +' button').show();
 })

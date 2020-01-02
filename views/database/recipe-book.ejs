@@ -5,7 +5,7 @@
 <body>
   <%- include('../partials/header') %>
   <main>
-    <h2> <%=username%>'s <%= listName %> Recipe Book </h2>
+    <h2> <%=username%>'s <%= list.list_name %> Recipe Book </h2>
     <h4>
       View recipes for drinks you've saved, create recipe books
       for special occassions, and even update your current recipes based on personal taste!
@@ -13,7 +13,7 @@
     <!-- <form action="<%= '/newCocktailList' %>" method="get">
     <button type="submit">Create new Cocktail List</button>
   </form> -->
-    <% cocktailArray.forEach(cocktail => { %>
+    <% cocktailArray.forEach((cocktail, index) => { %>
     <ul>
       <img src=<%= cocktail.image_url %>>
       <h2><%= cocktail.title %></h2>
@@ -23,10 +23,19 @@
       <h4>Instructions: </h4>
       <p><%= cocktail.instructions %></p>
     </ul>
-    <form action="<%= '/update?_method=PUT' %>" method="post">
+
+    <button class="editButton" id="editButton<%= index %>">Edit Cocktail</button>
+
+    <form id="showEditForm<%= index %>" class="editForm" action="<%= '/update?_method=PUT' %>" method="post">
       <input type="hidden" name="cocktail_id" value="<%= cocktail.id %>">
-      <button type="submit">Edit Cocktail</button>
+      <input type="text" name="title" value="<%= cocktail.title %>">
+      <input type="hidden" name="currentList" value="<%=list.list_name %>">
+      <textarea type="textarea" rows="4" cols="30" name="ingredients" value="<%= cocktail.ingredients %>"><%= cocktail.ingredients %></textarea>
+      <textarea type="textarea" rows="4" cols="30" name="instructions" value="<%= cocktail.instructions %>"><%= cocktail.instructions %></textarea>
+      <button type="submit">Confirm Edits</button>
     </form>
+
+
     <form action="<%= '/delete/deletecocktail?_method=DELETE' %>" method="post">
       <input type="hidden" name="cocktail_id" value="<%= cocktail.id %>">
       <button type="submit">delete</button>
@@ -36,7 +45,7 @@
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
 
-  <script type="text/javascript" src="./js/app.js"></script>
+  <script type="text/javascript" src="/js/app.js"></script>
 </body>
 
 </html>
