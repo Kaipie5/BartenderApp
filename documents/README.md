@@ -96,6 +96,15 @@ Finish time: 11:55am
 
 Actual time needed to complete: 25 minutes
 
+Number and name of feature: Modularization of Files
+
+Estimate of time needed to complete: 1 hour
+
+Start time: 5:00pm
+
+Finish time: 7:00pm
+
+Actual time needed to complete: 2 hours
 
 Number and name of feature: Login Handler
 
@@ -141,3 +150,24 @@ Finish time: 12:00pm
 
 Actual time needed to complete: 1 hours
 
+
+Number and name of feature: Update cocktails
+
+Estimate of time needed to complete: 2 hours
+
+Start time: 10:00am
+
+Finish time: 12:15pm
+
+Actual time needed to complete: 2 hours and 15 minutes
+
+
+Number and name of feature: About Page
+
+Estimate of time needed to complete: 30 minutes
+
+Start time: 12:00pm
+
+Finish time: 12:30pm
+
+Actual time needed to complete: 30 minutes

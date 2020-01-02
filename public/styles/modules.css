@@ -191,6 +191,7 @@ main ul {
 textarea, input{
     width: 70%;
     margin-left: 10px;
+    position: relative;
 }
 
 /* container {
