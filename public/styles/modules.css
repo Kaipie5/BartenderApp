@@ -187,10 +187,15 @@ main ul {
     display: flex;
     justify-content: center;
 }
-textarea{
+textarea, input{
     width: 70%;
     margin-left: 10px;
 }
+
+/* container {
+    display: flex;
+    justify-content: center;
+} */
 
 
 					/* MEDIA RULES */
