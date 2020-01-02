@@ -18,6 +18,8 @@
         <button class="small-button" type="submit">Search Extra Ingredient</button>
       </form>
     <h1 id="search-results-title">Search Results:</h1>
+    <h1>You have found <%= arr.length %> cocktail recipes.</h1>
+    <button onclick="location.href='/search';"  class="small-button">Return to Search</button>
     <div id="search-results">
         <% arr.forEach(cocktail => { %>
         <img src=<%= cocktail.image_url %>>
