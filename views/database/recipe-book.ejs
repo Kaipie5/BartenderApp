@@ -28,7 +28,7 @@
 
     <form id="showEditForm<%= index %>" class="editForm" action="<%= '/update?_method=PUT' %>" method="post">
       <input type="hidden" name="cocktail_id" value="<%= cocktail.id %>">
-      <input type="hidden" name="title" value="<%= cocktail.title %>">
+      <input type="text" name="title" value="<%= cocktail.title %>">
       <input type="hidden" name="currentList" value="<%=list.list_name %>">
       <textarea type="textarea" rows="4" cols="30" name="ingredients"
         value="<%= cocktail.ingredients %>"><%= cocktail.ingredients %></textarea>
