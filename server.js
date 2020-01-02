@@ -36,6 +36,7 @@ app.get('/recipe-book/:id', recipeBook);
 app.get('/all-recipe-books', viewAllRecipeBooks)
 app.post('/insertcocktail', cocktailHandler.insertIntoDatabase);
 app.delete('/delete/deletecocktail', cocktailHandler.deleteCocktail);
+app.put('/update', cocktailHandler.updateCocktail)
 app.get('/about-devs', (request, response) => {response.render('about-devs')})
 app.post('/newCocktailList', createNewCocktailList);
 app.post('/search/cocktails/extra', filterExtraIngredients);

@@ -108,5 +108,31 @@ module.exports = {
             });
       })
     
+  },
+
+  updateCocktail: function(request, response) {
+    let id = request.body.cocktail_id;
+    let sql1 = "UPDATE cocktails SET title=$1, instructions=$2, ingredients=$3 WHERE id = $4;"
+    let safeValues1 = [request.body.title, request.body.instructions, request.body.ingredients, id]
+    client.query(sql1, safeValues1)
+        .then(results => {
+          // let sql2 = `DELETE FROM cocktails WHERE id = $1;`;
+    
+          // let safeValues2 = [id];
+        
+          // client.query(sql2, safeValues2)
+          //   .then(() => {
+          //     let sql1 = "SELECT * FROM cocktail_lists WHERE cocktail_list_id=$1;"
+          //     let safeValues1 = [results.rows[0].cocktail_list]
+          //     client.query(sql1, safeValues1)
+          //       .then(results => {
+          //         response.redirect('/recipe-book/' + results.rows[0].list_name);
+          //     })
+          //   })
+          //   .catch(error => {
+          //     handleError(error, response);
+          //   });
+      })
+    
   }
 };
