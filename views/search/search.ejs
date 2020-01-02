@@ -4,52 +4,46 @@
 <%- include('../partials/head') %>
 
 <body>
-  <a>Search by Name</a>
-  <form action='/view' method='post'>
-    <input type="text" name="search" value="Enter cocktail name" required>
-    <button type="submit">Search</button>
-  </form>
-  <div id="base-selectors">
-    <section>
-      <a> VODKA </a>
-      <form action='/search/cocktails' method='post'>
-        <input type="hidden" name="search" value="Vodka" required>
-        <button type="submit">Vodka</button>
+  <%- include('../partials/header') %>
+  
+  <main>
+    <div id="search-by-name">
+      <form action='/view' method='post'>
+        <a>Search by Cocktail Name</a>
+        <input type="text" name="search" required>
+        <button type="submit">Search</button>
       </form>
-    </section>
-    <section>
-      <a> GIN </a>
-      <form action='/search/cocktails' method='post'>
-        <input type="hidden" name="search" value="Gin" required>
-        <button type="submit">Gin</button>
-      </form>
-    </section>
-    <section>
-      <a> WHISKEY </a>
-      <form action='/search/cocktails' method='post'>
-        <input type="hidden" name="search" value="Whiskey" required>
-        <button type="submit">Whiskey</button>
-      </form>
-    </section>
-    <section>
-      <a> RUM </a>
-      <form action='/search/cocktails' method='post'>
-        <input type="hidden" name="search" value="Rum" required>
-        <button type="submit">Rum</button>
-      </form>
-    </section>
-    <!-- <section>
-      <a href=""> GIN </a>
-    </section>
-    <section>
-      <a href=""> WHISKEY </a>
-    </section>
-    <section>
-      <a href=""> RUM </a>
-    </section> -->
+    </div>
 
-  </div>
+    <div id="base-selectors">
+      <p>Search by Base Liquor</p>
+      <section class="base-selector-tile">
+        <form action='/search/cocktails' method='post'>
+          <input type="hidden" name="search" value="Vodka" required>
+          <button class="button" type="submit">Vodka</button>
+        </form>
+      </section>
+      <section class="base-selector-tile">
+        <form action='/search/cocktails' method='post'>
+          <input type="hidden" name="search" value="Gin" required>
+          <button class="button" type="submit">Gin</button>
+        </form>
+      </section>
+      <section class="base-selector-tile">
+        <form action='/search/cocktails' method='post'>
+          <input type="hidden" name="search" value="Whiskey" required>
+          <button class="button" type="submit">Whiskey</button>
+        </form>
+      </section>
+      <section class="base-selector-tile">
+        <form action='/search/cocktails' method='post'>
+          <input type="hidden" name="search" value="Rum" required>
+          <button class="button" type="submit">Rum</button>
+        </form>
+      </section>
 
+    </div>
+  </main>
 </body>
 
 </html>

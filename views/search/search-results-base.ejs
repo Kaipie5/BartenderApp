@@ -3,17 +3,33 @@
 <%- include('../partials/head') %>
 
 <body>
-    <% arr.forEach(cocktail => { %>
-    <ul>
+    <%- include('../partials/header') %>
+    
+    <main>
+    <form action='/search/cocktails/extra' method='post'>
+        <% arr.forEach(cocktail => { %>
+            <input type="hidden" name="cocktail[]" value="<%= cocktail.name %>"/>
+        <% }) %>
+        <select name="ingredient">
+        <% arr2.forEach(ingredient => { %>
+            <option value="<%= ingredient %>"><%= ingredient %></option>
+          <% }) %>
+        </select>
+        <button class="small-button" type="submit">Search Extra Ingredient</button>
+      </form>
+    <h1 id="search-results-title">Search Results:</h1>
+    <div id="search-results">
+        <% arr.forEach(cocktail => { %>
         <img src=<%= cocktail.image_url %>>
         <h2><%= cocktail.name %></h2>
         <p hidden id="cocktail-db-id-number"><%= cocktail.id %></p>
-    </ul>
-    <form action="/view" method="post">
-        <input type="hidden" name="search" value=<%= cocktail.name %> required>
-        <button type="submit">View Recipe</button>
-    </form>
-    <% }) %>
+        <form action="/view" method="post">
+            <input type="hidden" name="search" value="<%= cocktail.name %>" required>
+            <button class="small-button" type="submit">View Recipe</button>
+        </form>
+        <% }) %>
+    </div>
+    </main>
 </body>
 
 </html>

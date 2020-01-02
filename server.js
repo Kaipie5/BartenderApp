@@ -4,7 +4,7 @@ const express = require('express')
 require('dotenv').config()
 const app = express()
 require('ejs')
-const superagent = require('superagent')
+
 const client = require('./lib/client')
 const methodOverride = require('method-override')
 
@@ -14,93 +14,34 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true, }));
 app.use(methodOverride('_method'));
 
+
+const renderHome = require('./js/home');
+const searchCocktails  = require('./js/search')
+const cocktailHandler = require('./js/cocktailHandler.js')
+const recipeBook = require('./js/recipe-book')
+const loginHandler = require('./js/loginHandler.js')
+const viewAllRecipeBooks = require('./js/all-recipe-books.js')
+const createNewCocktailList = require('./js/create-new-cocktail-list.js')
+
+
 // ROUTES
-app.get('/', renderHome);
+app.get('/', (request, response) => {response.render('index')});
+app.post('/login', loginHandler)
+app.get('/home', renderHome);
 app.get('/search', searchCocktails);
-app.post('/search/cocktails', getCocktailsByBase);
-app.post('/view', getCocktailsByName);
-app.get('/database/recipe-book', renderRecipeBookPage);
-// app.post('/searches', getBookInfo);
-// app.post('/', insertIntoDatabase);
-// app.get('/books/:book_isbn', getOneBook);
-// app.put('/books/updatebook', updateBook);
-// app.delete('/delete/deletebook', deleteBook);
+app.post('/search/cocktails', cocktailHandler.getCocktailsByBase);
+app.post('/view', cocktailHandler.getCocktailsByName);
+app.get('/recipe-book/:id', recipeBook);
+app.get('/all-recipe-books', viewAllRecipeBooks)
+app.post('/insertcocktail', cocktailHandler.insertIntoDatabase);
+app.delete('/delete/deletecocktail', cocktailHandler.deleteCocktail);
+app.get('/about-devs', (request, response) => {response.render('about-devs')})
+app.post('/newCocktailList', createNewCocktailList);
+app.post('/search/cocktails/extra', cocktailHandler.filterExtraIngredients);
 
-function renderRecipeBookPage(request, response) {
-  let sql = "SELECT * FROM cocktails;";
-  client.query(sql)
-    .then(results => {
-      let cocktails = results.rows;
-      console.log(cocktails);
-      response.render('database/recipe-book', { cocktailArray: cocktails })
-    })
-}
+// let base = ["Light rum", "Applejack", "Gin", "Dark rum", "Sweet Vermouth", "Strawberry schnapps", "Scotch", "Apricot brandy", "Triple sec", "Southern Comfort", "Orange bitters", "Brandy", "Lemon vodka", "Blended whiskey", "Dry Vermouth", "Amaretto", "Champagne", "Coffee liqueur", "Bourbon", "Tequila", "Vodka", "Añejo rum", "Bitters", "Kahlua", "Dubonnet Rouge", "Irish whiskey", "Apple brandy", "Cherry brandy", "Creme de Cacao", "Port", "Coffee brandy", "Red wine", "Rum", "Ricard", "Sherry", "Cognac", "Sloe gin", "Galliano", "Peach Vodka", "Ouzo", "Spiced rum", "Angelica root", "Johnnie Walker", "Everclear", "Firewater", "Lager", "Whiskey", "Absolut Citron", "Pisco", "Irish cream", "Ale", "Chocolate liqueur", "Midori melon liqueur", "Sambuca", "Blackberry brandy", "Peppermint schnapps", "Creme de Cassis", "Jack Daniels"];
 
-function renderHome(request, response) {
-  response.render('index');
-}
-
-function searchCocktails(request, response) {
-  response.render('search/search');
-}
-
-function getCocktailsByBase(request, response) {
-  superagent.get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${request.body.search}`).then(responseFromSuper => {
-    let arr = responseFromSuper.body.drinks.map(cocktail => {
-      return new SearchCocktail(cocktail);
-    });
-    response.render('search/search-results-base', { arr: arr });
-  })
-}
-
-function getCocktailsByName(request, response) {
-  superagent.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${request.body.search}`).then(responseFromSuper => {
-    let filteredResult = responseFromSuper.body.drinks;
-    console.log(filteredResult[0]);
-    let ingredientArray = [];
-    let measureArray = [];
-    for (let [K, V] of Object.entries(filteredResult[0])) {
-      if (K.includes('Ingredient')) {
-        ingredientArray.push(V);
-      }
-      if (K.includes('Measure')) {
-        measureArray.push(V);
-      }
-    }
-    let cocktail = new Cocktail(filteredResult[0], ingredientArray, measureArray);
-    response.render('view', { cocktail: cocktail });
-  })
-}
-
-
-function Cocktail(obj, ingredientArray, measureArray) {
-  this.name = obj.strDrink;
-  this.image_url = obj.strDrinkThumb;
-  this.id = obj.idDrink;
-  this.instructions = obj.strInstructions;
-  let instructionRegex = /\.\w/g;
-  let capLetterRegex = /\.\s[a-z]/g;
-  if (instructionRegex.test(this.instructions)) {
-    this.instructions = this.instructions.replace(/\./g, '. ');
-    let fLeterArr = this.instructions.match(capLetterRegex);
-    for (let i = 0; i < fLeterArr.length; i++) {
-      this.instructions = this.instructions.replace(/\.\s[a-z]/, fLeterArr[i].toUpperCase())
-    }
-  }
-  this.ingredients = measureArray[0] + ' ' + ingredientArray[0];
-  for (let i = 1; i < ingredientArray.length; i++) {
-    measureArray[i] !== null ? this.ingredients = this.ingredients + ', ' + measureArray[i] : this.ingredients;
-
-    ingredientArray[i] !== null ? this.ingredients = this.ingredients + ' ' + ingredientArray[i] : this.ingredients;
-  }
-}
-
-function SearchCocktail(obj) {
-  this.name = obj.strDrink;
-  this.image_url = obj.strDrinkThumb;
-  this.id = obj.idDrink;
-}
-
+// let ingredients = ["Lime juice", "demerara Sugar", "Sugar", "Tea", "Grenadine", "Grapefruit juice", "Carbonated water", "Apple juice", "Pineapple juice", "Lemon juice", "Sugar syrup", "Milk", "Strawberries", "Chocolate syrup", "Yoghurt", "Mango", "Ginger", "Lime", "Cantaloupe", "Berries", "Grapes", "Kiwi", "Tomato juice", "Cocoa powder", "Chocolate", "Heavy cream", "Coffee", "Water", "Espresso", "Orange", "Cranberries", "Apple cider", "Cranberry juice", "Egg yolk", "Egg", "Grape juice", "Peach nectar", "Lemon", "Lemonade", "Cider", "Sprite", "7-Up"]
 
 client.connect()
   .then(() => {
