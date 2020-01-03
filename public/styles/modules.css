@@ -225,11 +225,7 @@ textarea, input{
     .small-button {
         padding: 20px 15px;
     }
-    .wrapper:hover ul {
-        width: 100px;
-        height: 250px;
-        border-radius: 10px;
-    }
+    
     img {
         width: 90%;
     }
