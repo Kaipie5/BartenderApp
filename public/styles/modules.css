@@ -194,10 +194,6 @@ textarea, input{
     position: relative;
 }
 
-/* container {
-    display: flex;
-    justify-content: center;
-} */
 
 #button-div-home {
     display: flex;
@@ -205,6 +201,22 @@ textarea, input{
     flex-wrap: wrap;
     
 }
+
+/*about the devs */
+#about-devs-main img{
+    width: 60%;
+}
+#about-devs-main h4{
+    margin: 20px;
+    margin-bottom: 40px;
+
+}
+
+#about-devs-title {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 
 					/* MEDIA RULES */
 @media (max-width: 930px) {
