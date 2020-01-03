@@ -4,13 +4,13 @@
 
 <body>
     <%- include('../partials/header') %>
-    
+
     <main>
     <form action='/search/cocktails/extra' method='post'>
         <% arr.forEach(cocktail => { %>
             <input type="hidden" name="cocktail[]" value="<%= cocktail.name %>"/>
         <% }) %>
-        <select name="ingredient">
+        <select class="drop-down" name="ingredient">
         <% arr2.forEach(ingredient => { %>
             <option value="<%= ingredient %>"><%= ingredient %></option>
           <% }) %>
@@ -18,17 +18,21 @@
         <button class="small-button" type="submit">Search Extra Ingredient</button>
       </form>
     <h1 id="search-results-title">Search Results:</h1>
+    <h1>You have found <%= arr.length %> cocktail recipes.</h1>
+    <button onclick="location.href='/search';"  class="small-button">Return to Search</button>
     <div id="search-results">
         <% arr.forEach(cocktail => { %>
+        <br><br><h2 class="drinkTitle"><%= cocktail.name %></h2>
         <img src=<%= cocktail.image_url %>>
-        <h2><%= cocktail.name %></h2>
         <p hidden id="cocktail-db-id-number"><%= cocktail.id %></p>
         <form action="/view" method="post">
             <input type="hidden" name="search" value="<%= cocktail.name %>" required>
             <button class="small-button" type="submit">View Recipe</button>
         </form>
+        <img class="lineBreak" src="/pictures/line.png"><br><br>
         <% }) %>
     </div>
+
     </main>
 </body>
 

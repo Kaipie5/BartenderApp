@@ -5,18 +5,24 @@
 
 <body>
   <%- include('../partials/header') %>
-  
+
   <main>
-    <div id="search-by-name">
+    <div id="search-by-name" >
       <form action='/view' method='post'>
-        <a>Search by Cocktail Name</a>
-        <input type="text" name="search" required>
-        <button type="submit">Search</button>
+        <div class="tb">
+          <div class="td"><input class="searchInput" type="text" name="search" placeholder="Search by Cocktail" required></div>
+          <div class="td" id="s-cover">
+            <button id="searchButton" type="submit">
+              <div id="s-circle"></div>
+              <span></span>
+            </button>
+          </div>
+        </div>
+
       </form>
     </div>
 
     <div id="base-selectors">
-      <p>Search by Base Liquor</p>
       <section class="base-selector-tile">
         <form action='/search/cocktails' method='post'>
           <input type="hidden" name="search" value="Vodka" required>
@@ -39,6 +45,18 @@
         <form action='/search/cocktails' method='post'>
           <input type="hidden" name="search" value="Rum" required>
           <button class="button" type="submit">Rum</button>
+        </form>
+      </section>
+      <section class="base-selector-tile">
+        <form action='/search/cocktails' method='post'>
+          <input type="hidden" name="search" value="Brandy" required>
+          <button class="button" type="submit">Brandy</button>
+        </form>
+      </section>
+      <section class="base-selector-tile">
+        <form action='/search/cocktails' method='post'>
+          <input type="hidden" name="search" value="Bourbon" required>
+          <button class="button" type="submit">Bourbon</button>
         </form>
       </section>
 

@@ -29,6 +29,14 @@ This app uses cors, express, superagent, ejs, method-override, and dotenv as dep
 
 12/27/2019 11:15am - Finished DeleteFromDatabase implementation
 
+12/29/2019 11:00pm - Finished LoginHandler implementation
+
+12/29/2019 11:00pm - Finished CreateIndividualList implementation
+
+12/30/2019 12:00pm - Finished NavBar Implementation
+
+12/30/2019 1:00pm - Finished Multi-Search Implementation
+
 ## Credits and Collaborations
 Cocktail Db for their API.
 
@@ -88,24 +96,78 @@ Finish time: 11:55am
 
 Actual time needed to complete: 25 minutes
 
+Number and name of feature: Modularization of Files
 
-Number and name of feature: 
+Estimate of time needed to complete: 1 hour
 
-Estimate of time needed to complete: 
+Start time: 5:00pm
 
-Start time: 
+Finish time: 7:00pm
 
-Finish time: 
+Actual time needed to complete: 2 hours
 
-Actual time needed to complete: 
+Number and name of feature: Login Handler
+
+Estimate of time needed to complete: 1 hour 30 minutes
+
+Start time: 5:00pm
+
+Finish time: 6:00pm
+
+Actual time needed to complete: 1 hour
 
 
-Number and name of feature: 
+Number and name of feature: Cocktail List
 
-Estimate of time needed to complete: 
+Estimate of time needed to complete: 2 hours
 
-Start time: 
+Start time: 6:00pm
 
-Finish time: 
+Finish time: 11:00pm
 
-Actual time needed to complete: 
+Actual time needed to complete: 5 hour
+
+
+
+Number and name of feature: Multi-Search
+
+Estimate of time needed to complete: 1 hour
+
+Start time: 11:00pm
+
+Finish time: 1:00pm
+
+Actual time needed to complete: 2 hours
+
+
+Number and name of feature: NavBar
+
+Estimate of time needed to complete: 1 hour
+
+Start time: 11:00pm
+
+Finish time: 12:00pm
+
+Actual time needed to complete: 1 hours
+
+
+Number and name of feature: Update cocktails
+
+Estimate of time needed to complete: 2 hours
+
+Start time: 10:00am
+
+Finish time: 12:15pm
+
+Actual time needed to complete: 2 hours and 15 minutes
+
+
+Number and name of feature: About Page
+
+Estimate of time needed to complete: 30 minutes
+
+Start time: 12:00pm
+
+Finish time: 12:30pm
+
+Actual time needed to complete: 30 minutes

@@ -1,20 +1,35 @@
+view{
+	height: 100%;
+}
 body {
 	height: 100%;
-	font-family: 'Lato', sans-serif;
-	background-color: #fff2ef56;
-	/* background-image: linear-gradient(to bottom, rgb(255, 251, 251), #5f1600a6 100%); */
+	font-family: 'Quicksand', sans-serif;
 	background-attachment: fixed;
 	text-align: center;
-	/* text-shadow: 0 .05rem .1rem rgba(0,0,0,.5); */
+	background-image: url('images/open-bar.png');
+  background-position: center;
+  background-repeat: repeat;
+  min-height: 100%;
   }
-
-.container {
+main {
+  background-color: rgba(18, 16, 16, 0.961);
+  height: 150%;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+#index-main {
+	height: 1000px;
+}
+#index-body {
+	height: 100%;
+}
+/* .container {
 	height: 1065px;
 	display: grid;
 	grid-template-columns: 50%;
 	grid-template-rows: 1/7;
 	grid-auto-flow: row;
-  }
+  } */
 
 h1, .h1,
 h2, .h2,
@@ -22,5 +37,50 @@ h3, .h3,
 h4, .h4,
 h5, .h5,
 h6, .h6 {
-	font: inherit;
+	font: Quicksand;
+	color: white;
 }
+h1 {
+	font-size: 24pt;
+}
+h2 {
+	font-size: 20pt;
+}
+h3 {
+	font-size: 18pt;
+}
+h4 {
+	font-size: 14pt;
+}
+p {
+	font-size: 12pt;
+}
+.aboutPictures {
+	width: 75%;
+	object-fit: cover;
+}
+h1 {
+	width: 75%;
+	margin: auto;
+	font-size: 140%;
+}
+h2 {
+	width: 75%;
+	margin: auto;
+	font-size: 125%;
+}
+.title {
+	font-size: 50px;
+	font-family: Lobster;
+}
+.drinkTitle {
+	font-size: 30px;
+	font-family: Lobster;
+}
+
+p {
+	color: white;
+	margin: auto;
+	width: 75%;
+}
+

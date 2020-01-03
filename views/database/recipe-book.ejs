@@ -5,30 +5,65 @@
 <body>
   <%- include('../partials/header') %>
   <main>
-    <h2> <%=username%>'s Recipe Book </h2>
-    <h4>
-      View recipes for drinks you've saved, create recipe books
-      for special occassions, and even update your current recipes based on personal taste!
-    </h4>
+    <br><h2 id="recipeBookTitle"> <%=username%>'s <%= list.list_name %> Cocktail Cabinet </h2><br><br>
+    <h4 id="recipe-book-intro">
+      <br>View recipes for drinks you've saved!<br><br>
+      Create cocktail cabinets!<br><br>
+      Update your current recipes based on personal taste!<br><br>
+    </h4> 
+
     <!-- <form action="<%= '/newCocktailList' %>" method="get">
     <button type="submit">Create new Cocktail List</button>
   </form> -->
-    <% cocktailArray.forEach(cocktail => { %>
+    <% cocktailArray.forEach((cocktail, index) => { %>
     <ul>
-      <img src=<%= cocktail.image_url %>>
-      <h2><%= cocktail.title %></h2>
+      <br><h2 class="cocktailTitle"><%= cocktail.title %></h2>
+      <img class="lineBreak" src="/pictures/line.png"><br><br>
+      <img src=<%= cocktail.image_url %>><br><br>
       <p hidden id="cocktail-db-id-number"><%= cocktail.id %></p>
-      <h3>Ingredients: </h3>
-      <p><%= cocktail.ingredients %></p>
-      <h4>Instructions: </h4>
+      <h3 class="ingredients">Ingredients: </h3><br>
+      
+      <% cocktail.ingredients.forEach(ingredient => { %>
+        <ul class="ingredientList">
+          <p><%= ingredient %></p>
+        </ul> 
+      <% }) %>
+      
+      <br>
+      <br><h4 class="instructions">Instructions: </h4><br>
+
       <p><%= cocktail.instructions %></p>
     </ul>
+
+    
+
+    <form id="showEditForm<%= index %>" class="editForm" action="<%= '/update?_method=PUT' %>" method="post">
+      <input type="hidden" name="cocktail_id" value="<%= cocktail.id %>">
+      <input type="hidden" name="currentList" value="<%=list.list_name %>">
+      <input type="hidden" name="test" value="HELLO">
+      <input type="text" name="title" value="<%= cocktail.title %>">
+      <textarea type="textarea" rows="4" cols="30" name="ingredients"
+        value="<%= cocktail.ingredients %>"><%= cocktail.ingredients %></textarea>
+      <textarea type="textarea" rows="4" cols="30" name="instructions"
+        value="<%= cocktail.instructions %>"><%= cocktail.instructions %></textarea>
+      <button class=" small-button" type="submit">Confirm Edits</button>
+    </form>
+    
+    <div class="recipe-buttons">
+      <button class="editButton small-button" id="editButton<%= index %>">Edit Cocktail</button>
     <form action="<%= '/delete/deletecocktail?_method=DELETE' %>" method="post">
       <input type="hidden" name="cocktail_id" value="<%= cocktail.id %>">
-      <button type="submit">delete</button>
+      <button class=" small-button" type="submit">Delete</button>
     </form>
+    </div>
+    
+    
     <% }) %>
   </main>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+
+  <script type="text/javascript" src="/js/app.js"></script>
 </body>
 
 </html>
