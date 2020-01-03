@@ -16,12 +16,14 @@ section, summary, time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	font: inherit;
+	font-family: 'Quicksand';
 	vertical-align: baseline;
-	color: rgb(66, 66, 66);
+	color: rgb(255, 255, 255);
 }
 
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
-	display: block;}
+	display: block;
+	font-family: 'Quicksand';
+}
 

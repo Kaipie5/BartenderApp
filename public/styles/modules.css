@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    color: #fff;
+    color: rgb(254, 254, 254);
     height: 100%;
     left: 0;
     overflow-y: auto;
@@ -21,7 +21,7 @@
 #login-form form {
     margin-top: 200px;
     padding: 30px;
-    background-color: rgb(184, 184, 184);
+    background-color: rgb(72, 72, 72);
     width: 200px;
     height: 200px;
     color: rgb(252, 248, 246);
@@ -45,14 +45,13 @@
 .navbar{
     width: 20%;
     height: 100px;
-    position: relative;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 .navbar div{
     height: 8px;
     width: 60px;
-    background-color: rgb(252, 248, 246);
+    background-color: rgb(108, 210, 165);
     position: absolute;
     transition: all 0.5s ease;
 }
@@ -99,7 +98,7 @@
 }
 .wrapper:hover ul {
     visibility: visible;
-    background-color: rgb(184, 184, 184);
+    background-color: rgb(108, 210, 165);
     width: 150px;
     height: 200px;
     border-radius: 10px;
@@ -108,8 +107,9 @@
 /* HOME */
 #greeting p{
     padding-top: 100px;
-    font-size: 20pt;
-    opacity: 60%;
+    font-size: 30pt;
+    opacity: 90%;
+    color: white;
 }
 
 #home-main{
@@ -132,25 +132,25 @@
 
 /* button */
 .button {
-    background-color: rgb(184, 184, 184); 
+    background-color: rgb(108, 210, 165); 
     border: none;
     color: rgb(252, 248, 246);
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 20px;
+    font-size: 30px;
     width: 200px;
     height: 200px;
     margin: 20px;
-    border-radius: 125px;
+    border-radius: 30px;
     position: relative;
   }
 
 /* small button */
 .small-button {
     border: none;
-    background-color: rgb(184, 184, 184);
+    background-color: rgba(108, 210, 165);
     color: rgb(252, 248, 246);
     padding: 15px 32px;
     text-decoration: none;
@@ -166,6 +166,7 @@
     margin-top: 30px;
     width: 35%;
     height: 35%;
+    border-radius: 30%;
 }
 #search-results-title {
     padding-top: 20px;
@@ -174,15 +175,61 @@
 /* view */
 img{
     width: 500px;
+    border-radius: 30%;
 }
 main ul {
     margin-top: 15px;
     margin-bottom: 15px;
 }
 #recipe-book-intro {
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 10px;
+    margin: auto;
+    border-style: double;
+    border-color: rgba(108, 210, 165);
+	border-width: 4px;
+	border-radius: 5px;
+	width: 75%;
+}
+#recipeBookTitle {
+    font-size: 250%;
+    font-family: Lobster;
+}
+
+#view-page-title {
+    font-size: 175%;
+}
+
+.ingredientList {
+    list-style-type: square;
+}
+
+.drop-down {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    font-size: large;
+    height: 50px;
+}
+
+.lineBreak {
+    width: 50%;
+    filter: invert(100%);
+}
+
+.ingredients {
+    font-size: 140%;
+}
+
+.instructions {
+    font-size: 140%;
+}
+
+.cocktailTitle {
+    font-size: 200%;
+    font-family: Lobster;
+}
+
+.recipe-buttons {
+    display: flex;
+    justify-content: center;
 }
 /* edit form */
 
@@ -205,8 +252,155 @@ textarea, input{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    
 }
+
+/* SEARCH BAR */
+
+.tb {
+    display: table;
+    width: 100%;
+}
+
+.td {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#search-by-name {
+    margin: auto;
+    width: 75%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(108, 210, 165), 0 0 0 10px rgba(108, 210, 165);
+    transform: scale(0.6);
+}
+.searchInput[type="text"]
+{
+    width: 100%;
+    height: 96px;
+    font-size: 60px;
+    line-height: 1;
+    background-color: rgb(255, 255, 255);
+}
+
+.searchInput[type="text"]::placeholder
+{
+    color: rgb(72, 72, 72);
+}
+#s-cover
+{
+    width: 1px;
+    padding-left: 35px;
+}
+#searchButton
+{
+    position: relative;
+    display: block;
+    background-color: rgb(255, 255, 255);
+    width: 84px;
+    height: 96px;
+    margin-left: -16px;
+    margin-right: 10px;
+    border-color: transparent;
+    cursor: pointer;
+}
+#s-circle
+{
+    position: relative;
+    top: -8px;
+    left: 0;
+    width: 43px;
+    height: 43px;
+    margin-top: 0;
+    border-width: 15px;
+    border: 15px solid rgb(72, 72, 72);
+    border-radius: 50%;
+    transition: 0.5s ease all;
+}
+button span
+{
+    position: absolute;
+    top: 68px;
+    left: 43px;
+    display: block;
+    width: 45px;
+    height: 15px;
+    border-radius: 10px;
+    transform: rotateZ(52deg);
+    transition: 0.5s ease all;
+}
+button span:before, button span:after
+{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 45px;
+    height: 15px;
+    background-color: rgb(72, 72, 72);
+    border-radius: 10px;
+    transform: rotateZ(0);
+    transition: 0.5s ease all;
+}
+
+#s-cover:hover #s-circle
+{
+    top: -1px;
+    width: 67px;
+    height: 15px;
+    border-width: 0;
+    background-color: rgb(72, 72, 72);
+    border-radius: 20px;
+}
+
+#s-cover:hover span
+{
+    top: 50%;
+    left: 56px;
+    width: 25px;
+    margin-top: -9px;
+    transform: rotateZ(0);
+}
+
+#s-cover:hover button span:before
+{
+    bottom: 11px;
+    transform: rotateZ(52deg);
+}
+
+#s-cover:hover button span:after
+{
+    bottom: -11px;
+    transform: rotateZ(-52deg);
+}
+#s-cover:hover button span:before, #s-cover:hover button span:after
+{
+    right: -6px;
+    width: 40px;
+    background-color: rgb(72, 72, 72);
+}
+
+/*Log in page*/
+#loginBox {
+margin: auto;
+width: 100%;
+height: 30px;
+font-size: large;
+}
+
+/* All List Pages */
+#recipe-head {
+    font-size: 250%;
+}
+#cabinet {
+    width: 30%;
+}
+.text-input {
+    font-size: large;
+    width: 50%;
+    height: 40px;
+}
+
 
 					/* MEDIA RULES */
 @media (max-width: 930px) {

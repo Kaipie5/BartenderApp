@@ -6,11 +6,17 @@
     <main>
         <%- include('./partials/header') %>
         <ul>
-            <h1 id="view-page-title"><%= cocktail.title %></h1>
-            <img src=<%= cocktail.image_url %>>
-            <h1>Ingredients: </h1>
-            <p><%= cocktail.ingredients %></p>
-            <h2>Instructions: </h2>
+            <br><br><h2 class="cocktailTitle"><%= cocktail.title %></h2>
+            <img class="lineBreak" src="/pictures/line.png"><br><br>
+            <img src=<%= cocktail.image_url %>><br><br>
+            <p hidden id="cocktail-db-id-number"><%= cocktail.id %></p>
+            <h3 class="ingredients">Ingredients: </h3><br>
+            <% cocktail.ingredients.forEach(ingredient => { %>
+                <ul class="ingredientList">
+                  <p><%= ingredient %></p>
+                </ul> 
+              <% }) %>
+            <br><h4 class="instructions">Instructions: </h4><br>
             <p><%= cocktail.instructions %></p>
         </ul>
         <div id="<%= cocktail.id %>">
@@ -19,13 +25,14 @@
                 <input type="hidden" name="title" value="<%= cocktail.title %>">
                 <input type="hidden" name="image_url" value="<%= cocktail.image_url %>">
                 <input type="hidden" name="instructions" value="<%= cocktail.instructions %>">
-                <input type="hidden" name="ingredients" value="<%= cocktail.ingredients %>">
-                <select name="cocktailList">
+                <input type="hidden" name="ingredients" value="<%= cocktail.ingredients %>"> 
+                <select class="drop-down" name="cocktailList">
                     <% cocktailLists.forEach(cocktailList => { %>
                     <option value="<%= cocktailList.list_name %>"><%= cocktailList.list_name %></option>
                     <% }) %>
-                </select>
+                </select><br>
                 <button class="small-button" type="submit">Save to recipe book</button>
+                <br><br>
             </form>
         </div>
     </main>

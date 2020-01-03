@@ -21,4 +21,5 @@ $newSelector.click(function() {
     $('#showEditForm' + idNum +' input').show();
     $('#showEditForm' + idNum +' textarea').show();
     $('#showEditForm' + idNum +' button').show();
+    $('.editButton').hide();
 })

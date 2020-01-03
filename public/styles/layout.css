@@ -3,7 +3,7 @@ view{
 }
 body {
 	height: 100%;
-	font-family: 'Lato', sans-serif;
+	font-family: 'Quicksand', sans-serif;
 	background-attachment: fixed;
 	text-align: center;
 	background-image: url('images/open-bar.png');
@@ -12,8 +12,8 @@ body {
   min-height: 100%;
   }
 main {
-  background-color: rgb(252, 248, 246);
-  height: 100%;
+  background-color: rgba(18, 16, 16, 0.961);
+  height: 150%;
   margin-left: 20%;
   margin-right: 20%;
 }
@@ -37,7 +37,8 @@ h3, .h3,
 h4, .h4,
 h5, .h5,
 h6, .h6 {
-	font: inherit;
+	font: Quicksand;
+	color: white;
 }
 
 .aboutPictures {
@@ -47,4 +48,25 @@ h6, .h6 {
 h1 {
 	width: 75%;
 	margin: auto;
+	font-size: 140%;
 }
+h2 {
+	width: 75%;
+	margin: auto;
+	font-size: 125%;
+}
+.title {
+	font-size: 50px;
+	font-family: Lobster;
+}
+.drinkTitle {
+	font-size: 30px;
+	font-family: Lobster;
+}
+
+p {
+	color: white;
+	margin: auto;
+	width: 75%;
+}
+

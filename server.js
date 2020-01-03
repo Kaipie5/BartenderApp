@@ -39,9 +39,12 @@ app.put('/update', cocktailHandler.updateCocktail)
 app.get('/about-devs', (request, response) => {response.render('about-devs')})
 app.post('/newCocktailList', createNewCocktailList);
 app.post('/search/cocktails/extra', cocktailHandler.filterExtraIngredients);
+app.get('*', (request, response) => {
+  response.render('error');
+});
 
 client.connect()
   .then(() => {
     app.listen(PORT, () => console.log(`App is listening on port ${PORT}`));
   })
-  .catch(err => console.error(err));
+  .catch(err => {console.error(err); response.render('error')});
