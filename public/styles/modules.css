@@ -243,10 +243,6 @@ textarea, input{
     position: relative;
 }
 
-/* container {
-    display: flex;
-    justify-content: center;
-} */
 
 #button-div-home {
     display: flex;
@@ -399,6 +395,20 @@ font-size: large;
     font-size: large;
     width: 50%;
     height: 40px;
+
+/*about the devs */
+#about-devs-main img{
+    width: 60%;
+}
+#about-devs-main h4{
+    margin: 20px;
+    margin-bottom: 40px;
+
+}
+
+#about-devs-title {
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 
@@ -407,11 +417,7 @@ font-size: large;
     .small-button {
         padding: 20px 15px;
     }
-    .wrapper:hover ul {
-        width: 100px;
-        height: 250px;
-        border-radius: 10px;
-    }
+    
     img {
         width: 90%;
     }
